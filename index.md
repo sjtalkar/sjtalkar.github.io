@@ -2,7 +2,7 @@
 ## Spark Databricks Delta Lake
 
 >NOTE: Sources for below Read Me text and pictures
-      Azure Databricks provides a large number of datasets. Access them - %fs ls “databricks-datasets” 
+       - Azure Databricks provides a large number of datasets. Access them - %fs ls “databricks-datasets” 
 
 - University of Michigan SIADS 516
 - [Apache Spark Beyond Shuffling • Holden Karau](https://www.youtube.com/watch?v=4xsBQYdHgn8)
@@ -31,14 +31,17 @@ For operations such as select, withColumns, map and other transforations seen be
 The Azure Databricks environment provides us with a Spark session - the object is named "spark". 
 Spark contexts can be created within a Spark session to work with Resilient Distributed Datasets. TO read and load data we use the Spark session object. In a notebook you can create a Spark session with:
 
-`from pyspark.sql import SparkSession
+```
+from pyspark.sql import SparkSession
 spark = SparkSession \
     .builder \
     .master("local[*]") \
     .appName('My First Spark application') \
     .getOrCreate() 
 
-sc = spark.sparkContext`
+sc = spark.sparkContext
+```
+
 
 ### All that you can load
 Now a Parquet data load does not benifit from it, but knowing your schema
@@ -49,7 +52,8 @@ Now a Parquet data load does not benifit from it, but knowing your schema
 The read structure is similar to that in Pandas in that you can specify delimitiers and if there is header and so on.
 
 For instance to read an Inside AirBnB csv file that has way too many columns to define schema on (not that it cannot be laboriously performed), we can set inferSchema to True (this unfortunately ensure a Job will be created). If the records can possible broken up by a newline character, set multiline to True.
-[Spark Multiline]]https://sparkbyexamples.com/spark/spark-read-multiline-multiple-line-csv-file/
+
+`[Spark Multiline]]https://sparkbyexamples.com/spark/spark-read-multiline-multiple-line-csv-file/`
 
 You will also notice escape set to the double quotes character- this is to preserve the qutotes in string. The difference in amenities column with and without double quotes can be seen as:
 This string with escape = '"' set
@@ -60,7 +64,8 @@ Turns to this is double quotes is not escaped:
 "{TV,""Cable TV""
 
 In Databricks, the diplay function prettifies the Dataframe so that you can see the data in rows muc better than if you use Spark's show
-!["Display of Table"](Pictures for Readme/DBDisplay.JPG)
+
+!["Display of Table"](https://github.com/sjtalkar/DP-100AzureSupervisedUnsupervisedDatabricksAndSpark/blob/main/Pictures%20for%20Readme/DBDisplay.JPG)
 
 `
 filePath = "dbfs:/mnt/training/airbnb/sf-listings/sf-listings-2019-03-06.csv"
@@ -70,7 +75,7 @@ display(rawDF)
 
 
 NOTE all types such as StringType, IntegerType and so on have to be imported.
-`
+```
 from pyspark.sql.types import *
 
 parquetSchema = StructType([
@@ -80,92 +85,87 @@ parquetSchema = StructType([
   StructField("bytes_served", IntegerType(), False)
   
 ])
-`
-#### Use the schema defined above
-`
+# Use the schema defined above
 df = (spark
   .read           # The DataFrameReader
   .schema(parquetSchema)           # Use the specified schema
   .parquet(path)                   # Creates a DataFrame from PARQUET after reading in the file
 )
-`  
-#### The below finds the number of distinct articles in the files 
-`
+
+# The below finds the number of distinct articles in the files 
 totalArticles = df.select('article').distinct().count() # Identify the total number of records remaining.
-
 print("Distinct Articles: {0:,}".format(totalArticles))
-`
 
-#### Read file from Github
-`
+
+# Read file from Github
+
 %sh curl -O "https://raw.githubusercontent.com/sjtalkar/SeriallyBuildDashboard/main/data/listings_1.csv"
-`
-#### check out where the file was stored
-`
+
+# check out where the file was stored
+
 %fs ls "file:/databricks/driver"
-`
-
-###### or dbutils.fs.ls("file:/databricks/driver")
 
 
+# or dbutils.fs.ls("file:/databricks/driver")
 
-##### Read in CSV to DataFrame using above path
-`
+# Read in CSV to DataFrame using above path
+
 path = 'file:/databricks/driver/listings_1.csv'
-`
-# load data using sqlContext
-`
-airbnb_df  = spark.read.csv(path, header=True, inferSchema=True, multiLine=True, escape='"')
-`
-##### display in table format
-`
-display(airbnb_df)
-`
 
-##### Create a function to get first letter of host name ( I know a trivial task)
-`
+# load data using sqlContext
+
+airbnb_df  = spark.read.csv(path, header=True, inferSchema=True, multiLine=True, escape='"')
+
+# display in table format
+display(airbnb_df)
+
+
+# Create a function to get first letter of host name ( I know a trivial task)
 def firstInitialFunction(name):
   return name[0]
-`
+
 firstInitialFunction("Jane")
 
 To create a udf from the function that can be applied on the dataframe column
 firstInitialUDF = udf(firstInitialFunction)
 
-Employ the UDF
+#Employ the UDF
 from pyspark.sql.functions import col
 display(airbnb_df.select(firstInitialUDF(col("host_name"))))
+```
 
+#### To create a registered UDF from the function that can be used within a SQL query
 
-TO create a registered UDF from the function that can be used within a SQL query
-
+```
 from pyspark.sql.types import *
 spark.udf.register("firstInitialRegisteredUDF", firstInitialFunction,  StringType())
-
-Employ the registered UDF 
-NOTE: convert the Dataframe into a view so that it can be used in the query!!!
+```
+#Employ the registered UDF 
+#NOTE: convert the Dataframe into a view so that it can be used in the query!!!
+```
 airbnb_df.createOrReplaceTempView("airbnbDF")
 
 %sql
 select distinct firstInitialRegisteredUDF(host_name) 
 from airbnbDF
-
+```
 
 Since UDFs can be time consuming, use pre-defined functions or vectorized UDFs
 The below is a UDF defined by a "decorator" pandas_udf is a vectorized UDF versus just udf which is a line by line udf
+
+```
 %python
 from pyspark.sql.functions import pandas_udf
 
-##### We have a string input/output
+# We have a string input/output
 @pandas_udf("string")
 def vectorizedUDF(name):
   return name.str[0]
 
 
-##### Text file can be read with read.csv
+# Text file can be read with read.csv
 
-###### Define the schema to reduce jobs
-`
+# Define the schema to reduce jobs
 from pyspark.sql.types import *
 
 textSchema = StructType([
@@ -187,7 +187,7 @@ exercise_df = (
               .csv(sourceFile)
                
 )
-`
+```
 
 All that you can avoid
 Aim : Reduce the number of jobs that are spawned and are to be executed.
@@ -197,7 +197,7 @@ UDFs - registering for usage in an SQL query
 Registering a dataframe as a view again so that it can be used in the query
 ### create a temporary view from the resulting DataFrame
 
-`
+```
 parquetDF.createOrReplaceTempView("parquet_table")
 Once registered the function or the view can be used in the SQL command
 %sql
@@ -261,7 +261,7 @@ select distinct * from exercise_cap_vw
 result = spark.sql(query)
 
 result.count()
-`
+```
 
 (3) Spark Jobs
 Out[75]: 100000
