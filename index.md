@@ -38,6 +38,7 @@ It's not until we induce an action that a job is triggered and the data is proce
 
 Let's take the task of reading a file.
 Inferring schema involves:
+
 -Knowing column names
 -Knowing the type of the data in the column
 -Knowing if the column contains null
@@ -323,9 +324,10 @@ result.write.parquet(destFile)
 -No consistency/isolation makes it almost impossible to mix appends and reads, batch and streaming
 
 #### Levels of data refinement as dataflows through data pipelines in Delta Lake
--Bronze : Raw ingestion : Dumping ground for raw data often with long retention
--Silver Filtered, augmented (intermediate data with some cleanup, queryable for easy debugging)
--Gold (Business level aggregates)
+
+1.Bronze : Raw ingestion : Dumping ground for raw data often with long retention
+2.Silver Filtered, augmented (intermediate data with some cleanup, queryable for easy debugging)
+3.Gold (Business level aggregates)
 
 #### Other advantages
 >*Two of the core features of Delta Lake are performing upserts (insert/updates) and Time Travel operations. 
