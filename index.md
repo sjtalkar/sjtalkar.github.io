@@ -18,11 +18,11 @@ This article is a compilation of noteworthy aspects captured when working with A
 
 #### What's the need being served
  **Big data - which is?**
- -Three Vs : Volume, Velocity, Variety 
+ - Three Vs : Volume, Velocity, Variety 
 
  **Resilient Distributed Datasets**
- -Fault tolerant (recomputation in case of failure)
- -Parallelization and partitioning (Split into nodes within a cluster and also CPUs within a node)
+ - Fault tolerant (recomputation in case of failure)
+ - Parallelization and partitioning (Split into nodes within a cluster and also CPUs within a node)
  
  
 As you may know, Spark is a Distributed computing environment. The unit of distribution is a Spark Cluster. Every Cluster has a Driver and one or more executors. Work submitted to the Cluster is split into as many independent Jobs as needed. This is how work is distributed across the Cluster's nodes. Jobs are further subdivided into tasks.
@@ -39,9 +39,9 @@ It's not until we induce an action that a job is triggered and the data is proce
 Let's take the task of reading a file.
 Inferring schema involves:
 
--Knowing column names
--Knowing the type of the data in the column
--Knowing if the column contains null
+- Knowing column names
+- Knowing the type of the data in the column
+- Knowing if the column contains null
 
 When loading data for instance, using Parquet file saves on Inferring Schema. Number of jobs when reading a Parquet files is typically 0 because of the meta data available intrinsically in Parquet files. For that matter while using JSON files saves on one job (column names and structure  are in the keys, but data types and nulls need to be inferred). 
 When the data has to be physically touched - that's when an Executor needs to roll up it's sleeve and get to work - to accomplish a Job.
@@ -319,32 +319,32 @@ result.write.parquet(destFile)
 ![Why Delta lake](https://github.com/sjtalkar/DP-100AzureSupervisedUnsupervisedDatabricksAndSpark/blob/main/Pictures%20for%20Readme/Deltalakeneed.JPG)
 
 #### Why Full ACID transactions are required?
--No Atomicity means failed Production jobs leave data in corrupt state requiring tedious recovery.
--No quality enforcement create inconsistent and unusable data
--No consistency/isolation makes it almost impossible to mix appends and reads, batch and streaming
+- No Atomicity means failed Production jobs leave data in corrupt state requiring tedious recovery.
+- No quality enforcement create inconsistent and unusable data
+- No consistency/isolation makes it almost impossible to mix appends and reads, batch and streaming
 
 #### Levels of data refinement as dataflows through data pipelines in Delta Lake
 
-1.Bronze : Raw ingestion : Dumping ground for raw data often with long retention
-2.Silver Filtered, augmented (intermediate data with some cleanup, queryable for easy debugging)
-3.Gold (Business level aggregates)
+1. Bronze : Raw ingestion : Dumping ground for raw data often with long retention
+2. Silver Filtered, augmented (intermediate data with some cleanup, queryable for easy debugging)
+3. Gold (Business level aggregates)
 
 #### Other advantages
 >*Two of the core features of Delta Lake are performing upserts (insert/updates) and Time Travel operations. 
 >
->*Scalable Metadata Handling: In big data, even the metadata itself can be "big data". Delta Lake treats metadata just like data, leveraging Spark's distributed processing power to handle all its metadata. As a result, Delta Lake can handle petabyte-scale tables with billions of partitions and files at ease.
+>* Scalable Metadata Handling: In big data, even the metadata itself can be "big data". Delta Lake treats metadata just like data, leveraging Spark's distributed processing power to handle all its metadata. As a result, Delta Lake can handle petabyte-scale tables with billions of partitions and files at ease.
 >
->*Time Travel (data versioning): Delta Lake provides snapshots of data enabling developers to access and revert to earlier versions of data for audits, rollbacks or to reproduce experiments.
+>* Time Travel (data versioning): Delta Lake provides snapshots of data enabling developers to access and revert to earlier versions of data for audits, rollbacks or to reproduce experiments.
 >
->*Open Format: All data in Delta Lake is stored in Apache Parquet format enabling Delta Lake to leverage the efficient compression and encoding schemes that are native to Parquet.
+>* Open Format: All data in Delta Lake is stored in Apache Parquet format enabling Delta Lake to leverage the efficient compression and encoding schemes that are native to Parquet.
 >
->*Unified Batch and Streaming Source and Sink: A table in Delta Lake is both a batch table, as well as a streaming source and sink. Streaming data ingest, batch historic backfill, and interactive queries all just work out of the box.
+>* Unified Batch and Streaming Source and Sink: A table in Delta Lake is both a batch table, as well as a streaming source and sink. Streaming data ingest, batch historic backfill, and interactive queries all just work out of the box.
 >
->*Schema Enforcement: Delta Lake provides the ability to specify your schema and enforce it. This helps ensure that the data types are correct and required columns are present, preventing bad data from causing data corruption.
+>* Schema Enforcement: Delta Lake provides the ability to specify your schema and enforce it. This helps ensure that the data types are correct and required columns are present, preventing bad data from causing data corruption.
 >
->*Schema Evolution: Big data is continuously changing. Delta Lake enables you to make changes to a table schema that can be applied automatically, without the need for cumbersome DDL.
+>* Schema Evolution: Big data is continuously changing. Delta Lake enables you to make changes to a table schema that can be applied automatically, without the need for cumbersome DDL.
 >
->*100% Compatible with Apache Spark API: Developers can use Delta Lake with their existing data pipelines with minimal change as it is fully compatible with Spark, the commonly used big data processing engine
+>* 100% Compatible with Apache Spark API: Developers can use Delta Lake with their existing data pipelines with minimal change as it is fully compatible with Spark, the commonly used big data processing engine
 
 
 
