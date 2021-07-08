@@ -10,9 +10,6 @@
 - [Azure Databricks notebooks and training from MS Learn](https://docs.microsoft.com/en-us/learn/paths/perform-data-science-azure-databricks/)
 
 
-
-
-![First Picture](https://github.com/sjtalkar/DP-100AzureSupervisedUnsupervisedDatabricksAndSpark/blob/main/Pictures%20for%20Readme/Picture1.png)
 ![Second Picture](https://github.com/sjtalkar/DP-100AzureSupervisedUnsupervisedDatabricksAndSpark/blob/main/Pictures%20for%20Readme/Picture2.png)
 
 ### Foray Into Spark and Databricks 
@@ -24,6 +21,8 @@ As you may know, Spark is a Distributed computing environment. The unit of distr
 * The second level of parallelization is the Slot - the number of which is determined by the number of cores and CPUs of each node.
 
 ##### Transformations and Actions
+
+![First Picture](https://github.com/sjtalkar/DP-100AzureSupervisedUnsupervisedDatabricksAndSpark/blob/main/Pictures%20for%20Readme/Picture1.png)
 
 It's not until we induce an action that a job is triggered and the data is processed. 
 When loading data for instance, using Parquet file saves on Inferring Schema. Number of job when reading a Parquet files is typically 0 beacuse of the meta data available. For that matter, using JSON files saves on one job (so does not infer the schema for data types but can infer column names since those are keys).
