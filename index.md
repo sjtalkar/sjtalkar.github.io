@@ -1,17 +1,17 @@
 # DP-100
-## Azure Supervised, Unsupervised Databricks, And Spark
+## Spark Databricks Delta Lake
 
 >NOTE: Sources for below Read Me text and pictures
       Azure Databricks provides a large number of datasets. Access them - %fs ls “databricks-datasets” 
 
-University of Michigan SIADS 516
-[Apache Spark Beyond Shuffling • Holden Karau](https://www.youtube.com/watch?v=4xsBQYdHgn8)
-[Reading Spark DAGs](https://www.youtube.com/watch?v=LoFN_Q224fQ)
-[Azure Databricks notebooks and training from MS Learn](https://docs.microsoft.com/en-us/learn/paths/perform-data-science-azure-databricks/)
+- University of Michigan SIADS 516
+- [Apache Spark Beyond Shuffling • Holden Karau](https://www.youtube.com/watch?v=4xsBQYdHgn8)
+- [Reading Spark DAGs](https://www.youtube.com/watch?v=LoFN_Q224fQ)
+- [Azure Databricks notebooks and training from MS Learn](https://docs.microsoft.com/en-us/learn/paths/perform-data-science-azure-databricks/)
 
 
 
-Foray Into Spark and Databricks 
+### Foray Into Spark and Databricks 
 
 This article is a compilation of noteworthy aspects captured when working with Azure Databricks and Spark. I was also introduced to Spark in a course in the Master of Applied DataScience program at University of Michigan.
 As you may know, Spark is a Distributed computing environment. The unit of distribution is a Spark Cluster. Every Cluster has a Driver and one or more executors. Work submitted to the Cluster is split into as many independent Jobs as needed. This is how work is distributed across the Cluster's nodes. Jobs are further subdivided into tasks.
