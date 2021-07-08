@@ -25,14 +25,33 @@ As you may know, Spark is a Distributed computing environment. The unit of distr
 ![First Picture](https://github.com/sjtalkar/DP-100AzureSupervisedUnsupervisedDatabricksAndSpark/blob/main/Pictures%20for%20Readme/Picture1.png)
 
 It's not until we induce an action that a job is triggered and the data is processed. 
-When loading data for instance, using Parquet file saves on Inferring Schema. Number of job when reading a Parquet files is typically 0 beacuse of the meta data available. For that matter, using JSON files saves on one job (so does not infer the schema for data types but can infer column names since those are keys).
-When the data has to be physically touched - that's when an Executoe needs to rool up it's sleeve and get to work - to accomplish a Job.
 
-For operations such as select, withColumns, map and other transforations seen below, things are kept on hold until an action demanding data is called such as show, count, collect (DANGER!!) and save.
+Let's take the task of reading a file.
+Inferring schema involves:
+-Knowing column names
+-Knowing the type of the data in the column
+-Knowing if the column contains null
 
-#### Setting up the spark session to get things going
+When loading data for instance, using Parquet file saves on Inferring Schema. Number of jobs when reading a Parquet files is typically 0 because of the meta data available intrinsically in Parquet files. For that matter, using JSON files saves on one job (column names and structure  are i the keys, but data types and nulls need to be inferred).
+When the data has to be physically touched - that's when an Executor needs to roll up it's sleeve and get to work - to accomplish a Job.
+
+For operations such as select, withColumns, map and other transforations seen above, things are kept on hold until an action demanding data is called such as show, count, collect (DANGER!!) and save.
+
+>Aside on Parquet
+>About Parquet => (with METADATA Files!)
+•	Free & Open Source.
+•	A Column-Oriented data store
+•	Increased query performance over row-based data stores.
+•	Provides efficient data compression.
+•	Designed for performance on large data sets.
+•	Supports limited schema evolution.
+•	Is a splittable "file format".
+
+
+
+#### Let's DIVE in : Setting up the spark session to get things going
 The Azure Databricks environment provides us with a Spark session - the object is named "spark". 
-Spark contexts can be created within a Spark session to work with Resilient Distributed Datasets. TO read and load data we use the Spark session object. In a notebook you can create a Spark session with:
+Spark contexts can be created within a Spark session to work with Resilient Distributed Datasets. To read and load data we use the Spark session object. In a notebook you can create a Spark session with:
 
 ```python
 from pyspark.sql import SparkSession
@@ -46,15 +65,12 @@ sc = spark.sparkContext
 ```
 
 
-### All that you can load
-Now a Parquet data load does not benifit from it, but knowing your schema
-
-1. column headers names type of column and nullable in advance reduces the number of jobs since you do not have to inferSchema
-2. Parquet files come with the metadata that helps avoid inferring schema but CSVs and Json can benefit from the schema definition shown below
+#### All that you can load
+Now a Parquet data load does not benefit from it, but knowing your schema as in column headers names type of column and nullable in advance, reduces the number of jobs since you do not have to inferSchema. Parquet files come with the metadata that helps avoid inferring schema but CSVs and JSON loads can benefit from the schema definition shown below.
 
 The read structure is similar to that in Pandas in that you can specify delimitiers and if there is header and so on.
 
-For instance to read an Inside AirBnB csv file that has way too many columns to define schema on (not that it cannot be laboriously performed), we can set inferSchema to True (this unfortunately ensure a Job will be created). If the records can possible broken up by a newline character, set multiline to True.
+For instance to read an Inside AirBnB csv file that has way too many columns to define schema on (not that it cannot be laboriously performed), we can set inferSchema to True (this unfortunately ensures a job will be created). If the records can possible broken up by a newline character, set multiline to True.
 
 `[Spark Multiline]]https://sparkbyexamples.com/spark/spark-read-multiline-multiple-line-csv-file/`
 
@@ -277,7 +293,7 @@ destFile = userhome + "/people.parquet"
 result.write.parquet(destFile)
 ```
 
-### Why DELTA LAKE
+### Why DELTA LAKE: Open source and Open Storage in Parquet
 
 -Historical queries (Streaming for real time as well as stored for analytics)
 -Messy data (schema adherence challenges)
@@ -286,6 +302,12 @@ result.write.parquet(destFile)
 
 [Source for intro to Delta Lake](https://www.youtube.com/watch?v=LJtShrQqYZY)
 ![Why Delta lake](https://github.com/sjtalkar/DP-100AzureSupervisedUnsupervisedDatabricksAndSpark/blob/main/Pictures%20for%20Readme/Deltalakeneed.JPG)
+
+#### Why Full ACID transactions are required?
+-No Atomicity means failed Production jobs leave data in corrupt state requiring tedious recovery.
+-No quality enforcement create inconsistent and unusable data
+-No consistency/isolation makes it almost impossible to mix appends and reads, batch and streaming
+
 
 
 
