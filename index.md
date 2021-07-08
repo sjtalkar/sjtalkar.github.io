@@ -11,6 +11,10 @@
 
 
 
+
+![First Picture](https://github.com/sjtalkar/DP-100AzureSupervisedUnsupervisedDatabricksAndSpark/blob/main/Pictures%20for%20Readme/Picture1.png)
+![Second Picture](https://github.com/sjtalkar/DP-100AzureSupervisedUnsupervisedDatabricksAndSpark/blob/main/Pictures%20for%20Readme/Picture2.png)
+
 ### Foray Into Spark and Databricks 
 
 This article is a compilation of noteworthy aspects captured when working with Azure Databricks and Spark. I was also introduced to Spark in a course in the Master of Applied DataScience program at University of Michigan.
@@ -67,15 +71,15 @@ In Databricks, the diplay function prettifies the Dataframe so that you can see 
 
 !["Display of Table"](https://github.com/sjtalkar/DP-100AzureSupervisedUnsupervisedDatabricksAndSpark/blob/main/Pictures%20for%20Readme/DBDisplay.JPG)
 
-`
+```python
 filePath = "dbfs:/mnt/training/airbnb/sf-listings/sf-listings-2019-03-06.csv"
 rawDF = spark.read.csv(filePath, header=True, inferSchema=True, multiLine=True, escape='"')
 display(rawDF)
-`
+```
 
 
 NOTE all types such as StringType, IntegerType and so on have to be imported.
-```
+```python
 from pyspark.sql.types import *
 
 parquetSchema = StructType([
@@ -136,13 +140,13 @@ display(airbnb_df.select(firstInitialUDF(col("host_name"))))
 
 #### To create a registered UDF from the function that can be used within a SQL query
 
-```
+```python
 from pyspark.sql.types import *
 spark.udf.register("firstInitialRegisteredUDF", firstInitialFunction,  StringType())
-```
+
 #Employ the registered UDF 
 #NOTE: convert the Dataframe into a view so that it can be used in the query!!!
-```
+
 airbnb_df.createOrReplaceTempView("airbnbDF")
 
 %sql
@@ -150,10 +154,12 @@ select distinct firstInitialRegisteredUDF(host_name)
 from airbnbDF
 ```
 
-Since UDFs can be time consuming, use pre-defined functions or vectorized UDFs
+Since UDFs can be time consuming 
+-they need to be serialized for the executor
+-and apply row by row, use pre-defined functions or vectorized UDFs
 The below is a UDF defined by a "decorator" pandas_udf is a vectorized UDF versus just udf which is a line by line udf
 
-```
+```python
 %python
 from pyspark.sql.functions import pandas_udf
 
@@ -197,7 +203,7 @@ UDFs - registering for usage in an SQL query
 Registering a dataframe as a view again so that it can be used in the query
 ### create a temporary view from the resulting DataFrame
 
-```
+```python
 parquetDF.createOrReplaceTempView("parquet_table")
 Once registered the function or the view can be used in the SQL command
 %sql
