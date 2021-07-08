@@ -266,7 +266,6 @@ select distinct * from exercise_cap_vw
 result = spark.sql(query)
 
 result.count()
-```
 
 (3) Spark Jobs
 Out[75]: 100000
@@ -276,6 +275,18 @@ destFile = userhome + "/people.parquet"
 
 # In case it already exists
 result.write.parquet(destFile)
+```
+
+### Why DELTA LAKE
+
+-Historical queries (Streaming for real time as well as stored for analytics)
+-Messy data (schema adherence challenges)
+-Mistakes and Failures (small file sizes/partitions)
+-Updates (Upsert requirements)
+
+[Source for intro to Delta Lake](https://www.youtube.com/watch?v=LJtShrQqYZY)
+![Why Delta lake](https://github.com/sjtalkar/DP-100AzureSupervisedUnsupervisedDatabricksAndSpark/blob/main/Pictures%20for%20Readme/Deltalakeneed.JPG)
+
 
 
 Sources: 
