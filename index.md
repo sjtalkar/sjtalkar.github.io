@@ -183,8 +183,8 @@ from airbnbDF
 ```
 
 Since UDFs can be time consuming 
--they need to be serialized for the executor
--and apply row by row, use pre-defined functions or vectorized UDFs
+- they need to be serialized for the executor
+- and applied row by row, use pre-defined functions or vectorized UDFs
 The below is a UDF defined by a "decorator" pandas_udf is a vectorized UDF versus just udf which is a line by line udf
 
 ```python
@@ -347,6 +347,78 @@ result.write.parquet(destFile)
 >* 100% Compatible with Apache Spark API: Developers can use Delta Lake with their existing data pipelines with minimal change as it is fully compatible with Spark, the commonly used big data processing engine
 
 
+#### To start out with Delta files, say from a dataframe, store it as a Delta file - as you would a Parquet file
+```python
+# write to Delta Lake in the format delta
+rawDataDF.write.mode("overwrite").format("delta").partitionBy("Country").save(DataPath)
 
-Sources: 
-Microsoft Azure Learning Path
+# You can read it in, ina similar fashion
+new_df = spark.read.format("delta").load(DataPath)
+
+# Some SQL DDL in DELTA
+
+spark.sql("""
+  DROP TABLE IF EXISTS customer_data_delta
+""")
+spark.sql("""
+  CREATE TABLE customer_data_delta
+  USING DELTA
+  LOCATION '{}'
+""".format(DataPath))
+
+
+#Then using cell magic in a .dbc notebook, esplore the data to your heart's content
+
+%sql
+SELECT count(*) FROM customer_data_delta
+
+#Note that we only store table name, path, database info in the Hive metastore, the actual schema is stored in the _delta_log directory as shown below.
+display(dbutils.fs.ls(DataPath + "/_delta_log"))
+
+#Also get the metadata
+%sql
+DESCRIBE DETAIL customer_data_delta
+
+# Append newly read data in a dataframe  Note the append mode
+(newDataDF
+  .write
+  .format("delta")
+  .partitionBy("Country")
+  .mode("append")
+  .save(DataPath)
+)
+
+#Register it so it can be used in a SQL query
+upsertDF.createOrReplaceTempView("upsert_data")
+
+%sql
+MERGE INTO customer_data_delta
+USING upsert_data
+ON customer_data_delta.InvoiceNo = upsert_data.InvoiceNo
+  AND customer_data_delta.StockCode = upsert_data.StockCode
+WHEN MATCHED THEN
+  UPDATE SET *
+WHEN NOT MATCHED
+  THEN INSERT *
+
+```
+
+#### Batch Operations
+```python
+upsertDF = spark.read.format("json").load("/mnt/training/enb/commonfiles/upsert-data.json")
+display(upsertDF)
+
+
+>Sources:
+> * Microsoft Azure Learning Path
+> Databricks comes with default demo datasets  
+> [](https://www.youtube.com/watch?v=oXwGFaQOgS0)
+> %fs ls “databricks-datasets”
+```
+
+**** Recap
+
+> Saving to Delta Lake is as easy as saving to Parquet, but creates an additional log file.
+> Using Delta Lake to create tables is straightforward and you do not need to specify schemas.
+> With Delta Lake, you can easily append new data without schema-on-read issues.
+> Changes to Delta Lake files will immediately be reflected in registered Delta tables.
