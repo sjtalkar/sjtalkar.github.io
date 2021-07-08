@@ -48,14 +48,16 @@ When the data has to be physically touched - that's when an Executor needs to ro
 For operations such as select, withColumns, map and other transforations seen above, things are kept on hold until an action demanding data is called such as show, count, collect (DANGER!!) and save.
 
 >Aside on Parquet
+>
 >About Parquet => (with METADATA Files!)
-•	Free & Open Source.
-•	A Column-Oriented data store
-•	Increased query performance over row-based data stores.
-•	Provides efficient data compression.
-•	Designed for performance on large data sets.
-•	Supports limited schema evolution.
-•	Is a splittable "file format".
+>
+>•	Free & Open Source.
+>•	A Column-Oriented data store
+>•	Increased query performance over row-based data stores.
+>•	Provides efficient data compression.
+>•	Designed for performance on large data sets.
+>•	Supports limited schema evolution.
+>•	Is a splittable "file format".
 
 
 
@@ -82,7 +84,7 @@ The read structure is similar to that in Pandas in that you can specify delimiti
 
 For instance to read an Inside AirBnB csv file that has way too many columns to define schema on (not that it cannot be laboriously performed), we can set inferSchema to True (this unfortunately ensures a job will be created). If the records can possible broken up by a newline character, set multiline to True.
 
-`[Spark Multiline]]https://sparkbyexamples.com/spark/spark-read-multiline-multiple-line-csv-file/`
+[Spark Multiline]]https://sparkbyexamples.com/spark/spark-read-multiline-multiple-line-csv-file/
 
 You will also notice escape set to the double quotes character- this is to preserve the qutotes in string. The difference in amenities column with and without double quotes can be seen as:
 This string with escape = '"' set
@@ -320,7 +322,7 @@ result.write.parquet(destFile)
 -No quality enforcement create inconsistent and unusable data
 -No consistency/isolation makes it almost impossible to mix appends and reads, batch and streaming
 
-#### Levels of data in Delta Lake
+#### Levels of data refinement as dataflows through data pipelines in Delta Lake
 -Bronze : Raw ingestion : Dumping ground for raw data often with long retention
 -Silver Filtered, augmented (intermediate data with some cleanup, queryable for easy debugging)
 -Gold (Business level aggregates)
