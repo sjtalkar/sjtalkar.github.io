@@ -417,8 +417,55 @@ display(upsertDF)
 ```
 
 **** Recap
-
 > Saving to Delta Lake is as easy as saving to Parquet, but creates an additional log file.
 > Using Delta Lake to create tables is straightforward and you do not need to specify schemas.
 > With Delta Lake, you can easily append new data without schema-on-read issues.
 > Changes to Delta Lake files will immediately be reflected in registered Delta tables.
+> Generally, the distinction between tables and DataFrames in Spark can be summarized by discussing scope and persistence:
+> Tables are defined at the workspace level and persist between notebooks.
+> DataFrames are defined at the notebook level and are ephemeral.
+
+
+#### FULL SET OF STEPS FROM DATAFRAME TO SPARK SQL TABLE
+
+```python
+
+#Read from a table (if one exists for training) - if not read from CSV, JSON... into a dataframe
+deltaDF = spark.read.table('customer_data_delta')
+
+
+#Write a dataframe into a delta format file out to a location by partitioning it and overwriting if it exists
+(customerCounts.write
+ .format('delta')
+ .partitionBy("Country")
+ .mode("overwrite")
+ .save(CustomerCountsPath)
+ 
+)
+CustomerCountsPath = userhome + "/delta/customer_counts/"
+
+dbutils.fs.rm(CustomerCountsPath, True) #deletes Delta table if previously created
+
+#Register the table as a Spark SQL table
+spark.sql("""
+  DROP TABLE IF EXISTS customer_counts
+""")
+
+spark.sql("""
+  CREATE TABLE customer_counts
+  USING DELTA
+  LOCATION '{}'
+""".format(CustomerCountsPath))
+
+
+#Add additional data from a CSV
+
+newDataPath = "/mnt/training/online_retail/outdoor-products/outdoor-products-small.csv"
+newDataDF = (spark
+ .read
+ .option("header", "true")
+ .schema(inputSchema)
+  .csv(newDataPath)
+            )
+
+```
