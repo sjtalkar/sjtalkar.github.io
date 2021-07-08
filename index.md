@@ -31,7 +31,7 @@ For operations such as select, withColumns, map and other transforations seen be
 The Azure Databricks environment provides us with a Spark session - the object is named "spark". 
 Spark contexts can be created within a Spark session to work with Resilient Distributed Datasets. TO read and load data we use the Spark session object. In a notebook you can create a Spark session with:
 
-```
+```python
 from pyspark.sql import SparkSession
 spark = SparkSession \
     .builder \
