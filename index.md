@@ -469,3 +469,69 @@ newDataDF = (spark
             )
 
 ```
+
+## SMALL FILE PROBLEM
+Historical and new data is often written in very small files and directories.
+
+This data may be spread across a data center or even across the world (that is, not co-located).
+The result is that a query on this data may be very slow due to
+
+- network latency
+- volume of file metatadata
+The solution is to compact many small files into one larger file. Delta Lake has a mechanism for compacting small files.
+
+Delta Lake supports the**OPTIMIZE** operation, which performs file compaction.
+
+**ZORDER** usage
+With Delta Lake the notation is:
+
+OPTIMIZE Students
+ZORDER BY Gender, Pass_Fail
+
+This will ensure all the data backing Gender = 'M' is colocated, then data associated with Pass_Fail = 'P' is colocated.
+
+See References below for more details on the algorithms behind ZORDER.
+
+Using ZORDER, you can order by multiple columns as a comma separated list; however, the effectiveness of locality drops.
+
+In streaming, where incoming events are inherently ordered (more or less) by event time, use ZORDER to sort by a different column, say 'userID'.
+Ensures that all data backing, for example, Grade=8 is colocated, then rewrites the sorted data into new Parquet files
+
+**VACUUM**
+To save on storage costs you should occasionally clean up invalid files using the VACUUM command.
+
+Invalid files are small files compacted into a larger file with the OPTIMIZE command.
+
+The syntax of the VACUUM command is
+
+VACUUM name-of-table RETAIN number-of HOURS;
+
+The number-of parameter is the retention interval, specified in hours.
+
+
+**Time Travel**
+Because Delta Lake is version controlled, you have the option to query past versions of the data. Let's look at the history of our current Delta table.
+
+```python
+#View the different versions
+%sql
+
+DESCRIBE HISTORY customer_data_delta
+
+#Select the version you want
+%sql
+SELECT COUNT(*)
+FROM customer_data_delta
+VERSION AS OF 1
+
+#Find the number of new records placed in
+%sql
+SELECT SUM(total_orders) - (
+  SELECT SUM(total_orders)
+  FROM customer_counts
+  VERSION AS OF 0
+  WHERE Country='Sweden') AS new_entries
+FROM customer_counts
+WHERE Country='Sweden'
+
+
