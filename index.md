@@ -52,13 +52,13 @@ For operations such as select, withColumns, map and other transforations seen ab
 >
 >About Parquet => (with METADATA Files!)
 >
->• Free & Open Source.
->• A Column-Oriented data store
->• Increased query performance over row-based data stores.
->• Provides efficient data compression.
->• Designed for performance on large data sets.
->• Supports limited schema evolution.
->• Is a splittable "file format".
+>* Free & Open Source.
+>* A Column-Oriented data store
+>* Increased query performance over row-based data stores.
+>* Provides efficient data compression.
+>* Designed for performance on large data sets.
+>* Supports limited schema evolution.
+>* Is a splittable "file format".
 
 
 
