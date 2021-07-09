@@ -48,17 +48,17 @@ When the data has to be physically touched - that's when an Executor needs to ro
 
 For operations such as select, withColumns, map and other transforations seen above, things are kept on hold until an action demanding data is called such as show, count, collect (DANGER!!) and save.
 
->Aside on Parquet
+> An aside on Parquet
 >
 >About Parquet => (with METADATA Files!)
 >
->•	Free & Open Source.
->•	A Column-Oriented data store
->•	Increased query performance over row-based data stores.
->•	Provides efficient data compression.
->•	Designed for performance on large data sets.
->•	Supports limited schema evolution.
->•	Is a splittable "file format".
+>• Free & Open Source.
+>• A Column-Oriented data store
+>• Increased query performance over row-based data stores.
+>• Provides efficient data compression.
+>• Designed for performance on large data sets.
+>• Supports limited schema evolution.
+>• Is a splittable "file format".
 
 
 
