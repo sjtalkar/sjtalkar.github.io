@@ -16,6 +16,17 @@
 
 This article is a compilation of noteworthy aspects captured when working with Azure Databricks and Spark. I was also introduced to Spark in a course in the Master of Applied DataScience program at University of Michigan.
 
+
+# Introduction to Spark RDD and Spark SQL
+[Click here for Notes and code] (https://github.com/sjtalkar/sjtalkar.github.io/blob/main/SparkRDDAndSQL.md)
+
+
+
+### Machine Learning with Spark ML
+[Click here for Notes and code] (https://github.com/sjtalkar/sjtalkar.github.io/blob/main/MachineLearningWithSpark.md)
+
+
+
 #### What's the need being served
  **Big data - which is?**
  - Three Vs : Volume, Velocity, Variety 
