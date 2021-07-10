@@ -6,8 +6,7 @@
 >NOTE: Sources for below Read Me text and pictures
        - Azure Databricks provides a large number of datasets. Access them in a .dbc with:
 
-```%fs ls “databricks-datasets”
-         ```
+```%fs ls “databricks-datasets”    ```
 
 Spark differs from many other machine learning frameworks in that we train our model on a single column that contains a vector of all of our features. Prepare the data by creating one column named features that has the average number of rooms, crime rate, and poverty percentage, for instance.
 
@@ -70,7 +69,7 @@ The scores in the column, Maximal Distance to Cluster Center, represent the max 
 If this number is high, it can mean that the cluster is widely dispersed. You should review this statistic together with the Average Distance to Cluster Center to determine the cluster's spread.
 
 The Combined Evaluation score at the bottom of the each section of results lists the averaged scores for the clusters created in that particular model.
-
+>
 
 
 
