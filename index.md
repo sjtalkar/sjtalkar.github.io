@@ -18,7 +18,7 @@ This article is a compilation of noteworthy aspects captured when working with A
 
 
 ### Introduction to Spark RDD and Spark SQL
-[Click here for Notes and Code](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/SparkRDDAndSQL.md
+[Click here for Notes and Code](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/SparkRDDAndSQL.md)
 
 
 ### Why DELTA LAKE: A File format that is Open source and Open Storage in Parquet to maintain DATA QUALITY!!!
