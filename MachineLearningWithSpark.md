@@ -16,59 +16,61 @@ VectorAssembler : A feature transformer that merges multiple columns into a vect
 > Metrics
 This section describes the metrics returned for the specific types of models supported for use with Evaluate Model:
 
-classification models
-regression models
-clustering models
-Metrics for classification models
-The following metrics are reported when evaluating binary classification models.
+Classification models
+Regression models
+Clustering models
 
-Accuracy measures the goodness of a classification model as the proportion of true results to total cases.
+### Metrics for classification models
 
-Precision is the proportion of true results over all positive results. Precision = TP/(TP+FP)
+>The following metrics are reported when evaluating binary classification models.
 
-Recall is the fraction of the total amount of relevant instances that were actually retrieved. Recall = TP/(TP+FN)
+>Accuracy measures the goodness of a classification model as the proportion of true results to total cases.
 
-F1 score is computed as the weighted average of precision and recall between 0 and 1, where the ideal F1 score value is 1.
+>Precision is the proportion of true results over all positive results. Precision = TP/(TP+FP)
 
-AUC measures the area under the curve plotted with true positives on the y axis and false positives on the x axis. This metric is useful because it provides a single number that lets you compare models of different types. AUC is classification-threshold-invariant. It measures the quality of the model's predictions irrespective of what classification threshold is chosen.
+>Recall is the fraction of the total amount of relevant instances that were actually retrieved. Recall = TP/(TP+FN)
 
-Metrics for regression models
-The metrics returned for regression models are designed to estimate the amount of error. A model is considered to fit the data well if the difference between observed and predicted values is small. However, looking at the pattern of the residuals (the difference between any one predicted point and its corresponding actual value) can tell you a lot about potential bias in the model.
+>F1 score is computed as the weighted average of precision and recall between 0 and 1, where the ideal F1 score value is 1.
 
-The following metrics are reported for evaluating regression models.
+>AUC measures the area under the curve plotted with true positives on the y axis and false positives on the x axis. This metric is useful because it provides a single number that lets you compare models of different types. AUC is classification-threshold-invariant. It measures the quality of the model's predictions irrespective of what classification threshold is chosen.
 
-Mean absolute error (MAE) measures how close the predictions are to the actual outcomes; thus, a lower score is better.
+### Metrics for regression models
+>The metrics returned for regression models are designed to estimate the amount of error. A model is considered to fit the data well if the difference between observed and predicted values is small. However, looking at the pattern of the residuals (the difference between any one predicted point and its corresponding actual value) can tell you a lot about potential bias in the model.
 
-Root mean squared error (RMSE) creates a single value that summarizes the error in the model. By squaring the difference, the metric disregards the difference between over-prediction and under-prediction.
+>The following metrics are reported for evaluating regression models.
 
-Relative absolute error (RAE) is the relative absolute difference between expected and actual values; relative because the mean difference is divided by the arithmetic mean.
+>Mean absolute error (MAE) measures how close the predictions are to the actual outcomes; thus, a lower score is better.
 
-Relative squared error (RSE) similarly normalizes the total squared error of the predicted values by dividing by the total squared error of the actual values.
+>Root mean squared error (RMSE) creates a single value that summarizes the error in the model. By squaring the difference, the metric disregards the difference between over-prediction and under-prediction.
 
-Coefficient of determination, often referred to as R2, represents the predictive power of the model as a value between 0 and 1. Zero means the model is random (explains nothing); 1 means there is a perfect fit. However, caution should be used in interpreting R2 values, as low values can be entirely normal and high values can be suspect.
+>Relative absolute error (RAE) is the relative absolute difference between expected and actual values; relative because the mean difference is divided by the arithmetic mean.
 
-Metrics for clustering models
-Because clustering models differ significantly from classification and regression models in many respects, Evaluate Model also returns a different set of statistics for clustering models.
+>Relative squared error (RSE) similarly normalizes the total squared error of the predicted values by dividing by the total squared error of the actual values.
 
-The statistics returned for a clustering model describe how many data points were assigned to each cluster, the amount of separation between clusters, and how tightly the data points are bunched within each cluster.
+>Coefficient of determination, often referred to as R2, represents the predictive power of the model as a value between 0 and 1. Zero means the model is random (explains nothing); 1 means there is a perfect fit. However, caution should be used in interpreting R2 values, as low values can be entirely normal and high values can be suspect.
 
-The statistics for the clustering model are averaged over the entire dataset, with additional rows containing the statistics per cluster.
+### Metrics for clustering models
+>Because clustering models differ significantly from classification and regression models in many respects, Evaluate Model also returns a different set of statistics for clustering models.
 
-The following metrics are reported for evaluating clustering models.
+>The statistics returned for a clustering model describe how many data points were assigned to each cluster, the amount of separation between clusters, and how tightly the data points are bunched within each cluster.
 
-The scores in the column, Average Distance to Other Center, represent how close, on average, each point in the cluster is to the centroids of all other clusters.
+>The statistics for the clustering model are averaged over the entire dataset, with additional rows containing the statistics per cluster.
 
-The scores in the column, Average Distance to Cluster Center, represent the closeness of all points in a cluster to the centroid of that cluster.
+>The following metrics are reported for evaluating clustering models.
 
-The Number of Points column shows how many data points were assigned to each cluster, along with the total overall number of data points in any cluster.
+>The scores in the column, Average Distance to Other Center, represent how close, on average, each point in the cluster is to the centroids of all other clusters.
 
-If the number of data points assigned to clusters is less than the total number of data points available, it means that the data points could not be assigned to a cluster.
+>The scores in the column, Average Distance to Cluster Center, represent the closeness of all points in a cluster to the centroid of that cluster.
 
-The scores in the column, Maximal Distance to Cluster Center, represent the max of the distances between each point and the centroid of that point's cluster.
+>The Number of Points column shows how many data points were assigned to each cluster, along with the total overall number of data points in any cluster.
 
-If this number is high, it can mean that the cluster is widely dispersed. You should review this statistic together with the Average Distance to Cluster Center to determine the cluster's spread.
+>If the number of data points assigned to clusters is less than the total number of data points available, it means that the data points could not be assigned to a cluster.
 
-The Combined Evaluation score at the bottom of the each section of results lists the averaged scores for the clusters created in that particular model.
+>The scores in the column, Maximal Distance to Cluster Center, represent the max of the distances between each point and the centroid of that point's cluster.
+
+>If this number is high, it can mean that the cluster is widely dispersed. You should review this statistic together with the Average Distance to Cluster Center to determine the cluster's spread.
+
+>The Combined Evaluation score at the bottom of the each section of results lists the averaged scores for the clusters created in that particular model.
 >
 
 
