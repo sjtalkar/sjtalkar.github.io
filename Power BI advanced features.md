@@ -1,4 +1,4 @@
-# How to create a function to piece mulptiple pages of an API together
+# How to create a function to piece multiple pages of an API together
 
 [Gil Raviv on APIs and advanced features of Power BI](https://www.youtube.com/watch?v=r0Qk5V8dvgg)
 
