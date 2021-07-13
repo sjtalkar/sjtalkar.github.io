@@ -30,7 +30,7 @@ Using the below a dynamic range list can be created, where PeopleCount can be a 
 - Right click on the query you want to convert to a function and select **Create Function** 
 - Invoke the Function by 
     - Access the table containing a column full of values of the same type as the parameter to the function.
-    - In the top meny select Add Column
+    - In the top menu select Add Column
     - Select Invoke Custom Function (next to Create Column from example, Conditional ....)
     - Select the function created earlier
     - Select the column in the table that will serve as Parameter
