@@ -31,3 +31,8 @@ loaded_model = mlflow.spark.load_model(f"runs:/{run.info.run_uuid}/log-model")
 display(loaded_model.transform(testDF))
 ```
 ![ML Lifecycle and tools](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/MLLearningLifecycle.JPG)
+
+
+## Tracking server
+
+![Protocol and Cloud Server](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/TrackingServer.JPG)
