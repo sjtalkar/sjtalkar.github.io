@@ -1,9 +1,9 @@
+# How to create a function to glom multiple pages of an API together
 
 [Gil Raviv on APIs and advanced features of Power BI](https://www.youtube.com/watch?v=r0Qk5V8dvgg)
 
-## How to create a function to bring multiple pages in an API
 
-### API URL In Power BI Get Data from Web and paste URL
+### API URL In Power BI: Get Data from Web and paste URL
 `https://swapi.dev/api/?page=1`
 
 
@@ -18,7 +18,7 @@ Right click on above list and convert To Table
 
 In our application, the Source query step will have a count field with the number of pages for people. Right click on it and create a query out of it.
 
-Using the above a dynamic range list can be created, where PeopleCount is a paramter or a Query.
+Using the below a dynamic range list can be created, where PeopleCount can be a parameter or a Query.
 
 `= List.Numbers(1,PeopleCount)`
 
@@ -38,6 +38,9 @@ Using the above a dynamic range list can be created, where PeopleCount is a para
     https://community.powerbi.com/t5/Desktop/Formula-Firewall-Query-references-other-queries-so-it-may-not/td-p/18619
     - The SingleQuery (the sample query with one page can continue to support modifications and it will flow to all the tables that the function creates)
 
+### Using a What If parameter
+
+[Modeling --> New Parameter](https://docs.microsoft.com/en-us/power-bi/transform-model/desktop-what-if)
 
 
 
