@@ -25,9 +25,8 @@ This article is a compilation of noteworthy aspects captured when working with A
 
 
 ### [Machine Learning with Spark ML](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/MachineLearningWithSpark.md)
-[Click here for Notes and Code]
 
-## [MLflow](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/MLFlowTracking.md)
+### [MLflow](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/MLFlowTracking.md)
 
 
 
