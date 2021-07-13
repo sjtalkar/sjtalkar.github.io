@@ -36,3 +36,22 @@ display(loaded_model.transform(testDF))
 ## Tracking server
 
 ![Protocol and Cloud Server](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/TrackingServer.JPG)
+
+### Advantages and utilities of MLflow
+- Modular Components greatly simplify the ML lifecycle
+- Easy to install and use 
+- Develop and deploy locally, but track locally or remotely
+- Available APIs: Python, Java and R 
+- Visualize experiments and compare runs
+- Centrally register and manage model lifecycle
+
+[Tutorials](https://dbricks.co/mlflow-part-1)
+
+### Exercise
+[Gas Consumption Prediction](https://github.com/dmatrix/mlflow-workshop-part-1/blob/master/notebooks/MLflow-CE.dbc) 
+
+
+### Logging in MLflow
+- mlflow.sklearn.log_model
+- mlflow.log_params()
+- mlflow.log_metric()
