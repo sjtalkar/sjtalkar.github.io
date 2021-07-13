@@ -151,4 +151,37 @@ You can find this code in : rfr_regression_base_exp_cls (inside setup folder in 
             print("  R2 : {}".format(r2))
 
             return (experimentID, runID)
-            ```
+   
+ ```  
+
+### Analyzing run in the Experiment UI.
+
+
+![At the top right corner, the meny item Experiments when clicked will offer the details about each run](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/AnalysingRuns.JPG)
+
+
+The class_setup module retrieves the stored model
+```python
+# iterate over several runs with different parameters, such as number of trees. 
+# For expermientation, try max_depth and consult the documentation what tunning parameters
+# may affect a better outcome.
+max_depth = 0
+for n in range (20, 250, 50):
+  max_depth = max_depth + 2
+  params = {"n_estimators": n, "max_depth": max_depth}
+  rfr = RFRModel.new_instance(params)
+  (experimentID, runID) = rfr.mlflow_run(dataset)
+  print("MLflow Run completed with run_id {} and experiment_id {}".format(runID, experimentID))
+  print("-" * 100)
+  ```
+
+
+  #### Other resources
+  Some Resources:
+
+- https://mlflow.org/docs/latest/python_api/mlflow.html
+- https://www.saedsayad.com/decision_tree_reg.htm
+- https://towardsdatascience.com/understanding-random-forest-58381e0602d2
+- https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html
+- https://towardsdatascience.com/regression-an-explanation-of-regression-metrics-and-what-can-go-wrong-a39a9793d914
+- https://www.analyticsvidhya.com/blog/2020/04/feature-scaling-machine-learning-normalization-standardization/
