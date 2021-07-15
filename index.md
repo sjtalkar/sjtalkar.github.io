@@ -2,7 +2,12 @@
 
 ## Webinars for DP-100 preparation
 
-[Setup of Azure ML SDK]()https://event.on24.com/eventRegistration/console/EventConsoleApollo.jsp?simulive=y&eventid=2212874&sessionid=1&username=&partnerref=&format=fhvideo1&mobile=&flashsupportedmobiledevice=&helpcenter=&key=0A2F5F9674BF2461AF518869BFC9F99D&newConsole=true&nxChe=true&newTabCon=true&consoleEarEventConsole=false&text_language_id=en&playerwidth=748&playerheight=526&eventuserid=458182767&contenttype=A&mediametricsessionid=396037513&mediametricid=3128234&usercd=458182767&mode=launch]
+[Setup of Azure ML SDK](https://event.on24.com/eventRegistration/console/EventConsoleApollo.jsp?simulive=y&eventid=2212874&sessionid=1&username=&partnerref=&format=fhvideo1&mobile=&flashsupportedmobiledevice=&helpcenter=&key=0A2F5F9674BF2461AF518869BFC9F99D&newConsole=true&nxChe=true&newTabCon=true&consoleEarEventConsole=false&text_language_id=en&playerwidth=748&playerheight=526&eventuserid=458182767&contenttype=A&mediametricsessionid=396037513&mediametricid=3128234&usercd=458182767&mode=launch)
+[Run Experiments and train models](DP-100: Run experiments and train models](https://event.on24.com/eventRegistration/console/EventConsoleApollo.jsp?simulive=y&eventid=2212884&sessionid=1&username=&partnerref=&format=fhvideo1&mobile=&flashsupportedmobiledevice=&helpcenter=&key=80CD5EB31F2690F50A6C7C2A84659D6F&newConsole=true&nxChe=true&newTabCon=true&consoleEarEventConsole=false&text_language_id=en&playerwidth=748&playerheight=526&eventuserid=458182862&contenttype=A&mediametricsessionid=396128823&mediametricid=3128246&usercd=458182862&mode=launch)
+[Optimize and manage models](https://event.on24.com/eventRegistration/console/EventConsoleApollo.jsp?simulive=y&eventid=2214339&sessionid=1&username=&partnerref=&format=fhvideo1&mobile=&flashsupportedmobiledevice=&helpcenter=&key=AFE052E683B8F543E1B7AF58F5294F18&newConsole=true&nxChe=true&newTabCon=true&consoleEarEventConsole=false&text_language_id=en&playerwidth=748&playerheight=526&eventuserid=458182628&contenttype=A&mediametricsessionid=396129283&mediametricid=3130171&usercd=458182628&mode=launch)
+[DP-100: Deploy and consume models](https://event.on24.com/eventRegistration/console/EventConsoleApollo.jsp?simulive=y&eventid=2214350&sessionid=1&username=&partnerref=&format=fhvideo1&mobile=&flashsupportedmobiledevice=&helpcenter=&key=88987917AB98B0323C069390A99106B8&newConsole=true&nxChe=true&newTabCon=true&consoleEarEventConsole=false&text_language_id=en&playerwidth=748&playerheight=526&eventuserid=458182953&contenttype=A&mediametricsessionid=396129465&mediametricid=3130185&usercd=458182953&mode=launch)
+
+
 
 
 [Setting up Azure ML SDK](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Know%20for%20the%20exam%20from%20the%20webinars.md)
