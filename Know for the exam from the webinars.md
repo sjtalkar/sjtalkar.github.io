@@ -1,5 +1,5 @@
 # Know for the exam (from the webinars for DP-100)
-
+```python
 import azureml.core
 from azureml.core import Workspace, Experiment, Run
 from azureml.core import ScriptRunConfig
@@ -9,7 +9,7 @@ exp = Experiment(workspace = ws, name ="explore-runs")
 
 notebook_run = exp.start_logging()
 notbook_run.log(name="message", value="Hello from run!")
-
+```
 
 ## Using the CLI
 
