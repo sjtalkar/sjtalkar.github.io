@@ -19,7 +19,7 @@ az ml run submit-script -c sklearn -e testexperiment train.py
 
 
 ## DataStores and Datasets
-![Picture of stores and data drift management]()
+![Picture of stores and data drift management](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/DataStoresInAzure.png)
 
 >Tabular Dataset
 - Represents data in a tabular fomat by parsing the provided file or list of files
