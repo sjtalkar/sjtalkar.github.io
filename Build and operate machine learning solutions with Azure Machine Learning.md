@@ -224,3 +224,12 @@ run.wait_for_completion()
 - Compute clusters: Scalable clusters of virtual machines for on-demand processing of experiment code.
 - Inference clusters: Deployment targets for predictive services that use your trained models.
 - Attached compute: Links to other Azure compute resources, such as Virtual Machines or Azure Databricks clusters.
+
+## MLFLow once again!
+!pip show azureml-mlflow
+>To use MLflow to track metrics for an inline experiment, you must set the MLflow tracking URI to the workspace where the experiment is being run. This enables you to use mlflow tracking methods to log data to the experiment run.
+
+
+
+
+(In designer: https://techcommunity.microsoft.com/t5/azure-developer-community-blog/data-cleansing-tools-in-azure-machine-learning/ba-p/336536)
