@@ -1,4 +1,12 @@
 # DP-100
+
+## Webinars for DP-100 preparation
+
+[Setup of Azure ML SDK]()https://event.on24.com/eventRegistration/console/EventConsoleApollo.jsp?simulive=y&eventid=2212874&sessionid=1&username=&partnerref=&format=fhvideo1&mobile=&flashsupportedmobiledevice=&helpcenter=&key=0A2F5F9674BF2461AF518869BFC9F99D&newConsole=true&nxChe=true&newTabCon=true&consoleEarEventConsole=false&text_language_id=en&playerwidth=748&playerheight=526&eventuserid=458182767&contenttype=A&mediametricsessionid=396037513&mediametricid=3128234&usercd=458182767&mode=launch]
+
+
+[Setting up Azure ML SDK](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Know%20for%20the%20exam%20from%20the%20webinars.md)
+
 ## Spark Databricks Delta Lake
 
 >NOTE: Sources for below Read Me text and pictures
