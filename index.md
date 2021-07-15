@@ -11,7 +11,7 @@
 [DP-100: Deploy and consume models](https://event.on24.com/eventRegistration/console/EventConsoleApollo.jsp?simulive=y&eventid=2214350&sessionid=1&username=&partnerref=&format=fhvideo1&mobile=&flashsupportedmobiledevice=&helpcenter=&key=88987917AB98B0323C069390A99106B8&newConsole=true&nxChe=true&newTabCon=true&consoleEarEventConsole=false&text_language_id=en&playerwidth=748&playerheight=526&eventuserid=458182953&contenttype=A&mediametricsessionid=396129465&mediametricid=3130185&usercd=458182953&mode=launch)
 
 
-
+## Notes and exercises from Webinars
 
 [Setting up Azure ML SDK](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Know%20for%20the%20exam%20from%20the%20webinars.md)
 
