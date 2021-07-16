@@ -144,13 +144,134 @@ Answer -
 
 3. You are interested in developing your ML modesl using CUDAs. You have also decided you do not need more than 12 cores. Which storage option should you pick?
 - Standard_NV12s_v3 with 12VCPUs 1GPU
-(GPU is reuired by CUDAs)
+(GPU is required by CUDAs)
 
 4. Which datastore cannot be used as a datastore in Azure ML
 - Azure DW(Synapse)
 
 5. For visual interface - Create a workspace with 'enterprise' SKU.
 Make sure the three basic elements - subscription id, resource group and workspace name
+
+
+# Optimize and manage models
+
+## Contending and dealing with Data Drift
+
+- Set a baseline model for the data by registering a baseline dataset
+```python
+from azureml.core import Datastore, Dataset
+
+
+# Upload the baseline data
+default_ds = ws.get_default_datastore()
+default_ds.upload_files(files=['./data/diabetes.csv', './data/diabetes2.csv'],
+                       target_path='diabetes-baseline',
+                       overwrite=True, 
+                       show_progress=True)
+
+# Create and register the baseline dataset
+print('Registering baseline dataset...')
+baseline_data_set = Dataset.Tabular.from_delimited_files(path=(default_ds, 'diabetes-baseline/*.csv'))
+baseline_data_set = baseline_data_set.register(workspace=ws, 
+                           name='diabetes baseline',
+                           description='diabetes baseline data',
+                           tags = {'format':'CSV'},
+                           create_new_version=True)
+
+print('Baseline dataset registered!')
+```
+>Create a target dataset
+Over time, you can collect new data with the same features as your baseline training data. To compare this new data to the baseline data, you must define a target dataset that includes the features you want to analyze for data drift as well as a timestamp field that indicates the point in time when the new data was current -this enables you to measure data drift over temporal intervals. The timestamp can either be a field in the dataset itself, or derived from the folder and filename pattern used to store the data. For example, you might store new data in a folder hierarchy that consists of a folder for the year, containing a folder for the month, which in turn contains a folder for the day; or you might just encode the year, month, and day in the file name like this: data_2020-01-29.csv; 
+
+- Create and register a dataset with a datetime column which has new data
+```python
+# Upload the files
+path_on_datastore = 'diabetes-target'
+default_ds.upload_files(files=file_paths,
+                       target_path=path_on_datastore,
+                       overwrite=True,
+                       show_progress=True)
+
+# Use the folder partition format to define a dataset with a 'date' timestamp column
+partition_format = path_on_datastore + '/diabetes_{date:yyyy-MM-dd}.csv'
+target_data_set = Dataset.Tabular.from_delimited_files(path=(default_ds, path_on_datastore + '/*.csv'),
+                                                       partition_format=partition_format)
+
+# Register the target dataset
+print('Registering target dataset...')
+target_data_set = target_data_set.with_timestamp_columns('date').register(workspace=ws,
+                                                                          name='diabetes target',
+                                                                          description='diabetes target data',
+                                                                          tags = {'format':'CSV'},
+                                                                          create_new_version=True)
+
+print('Target dataset registered!')
+```
+
+
+
+> Create a data drift MONITOR
+
+The data drift monitor will run periodically on-demand to compare the baseline dataset with the target dataset, to ehich new data will be added over time
+
+- Create a compute target to run the data drift monitor
+`    training_cluster = ComputeTarget(workspace=ws, name=cluster_name)`
+If the above returns no data, then create a compute target
+```python
+   compute_config = AmlCompute.provisioning_configuration(vm_size='STANDARD_DS11_V2', max_nodes=2)
+        training_cluster = ComputeTarget.create(ws, cluster_name, compute_config)
+        training_cluster.wait_for_completion(show_output=True)
+```
+
+> Define the data drift monitor : Use the DataDriftDetector class
+- Specify the features you want to monitor for data drift
+- Name of the compute target to be used to run the monitoring process
+- Frequency at which the data should be compared
+- The drift threshold abive which an alert should be triggered
+- Latency (in hours) to allow for data collection
+
+```python
+from azureml.datadrift import DataDriftDetector
+
+# set up feature list
+features = ['Pregnancies', 'Age', 'BMI']
+
+# set up data drift detector
+monitor = DataDriftDetector.create_from_datasets(ws, 'mslearn-diabates-drift', baseline_data_set, target_data_set,
+                                                      compute_target=cluster_name, 
+                                                      frequency='Week', 
+                                                      feature_list=features, 
+                                                      drift_threshold=.3, 
+                                                      latency=24)
+monitor
+```
+
+> Backfill the data drift monitor
+Use te baseline model and the target model to analyze data drift between them
+
+``` python
+from azureml.widgets import RunDetails
+
+backfill = monitor.backfill(dt.datetime.now() - dt.timedelta(weeks=6), dt.datetime.now())
+
+RunDetails(backfill).show()
+backfill.wait_for_completion()
+```
+>Analyze Drift data
+```python
+drift_metrics = backfill.get_metrics()
+for metric in drift_metrics:
+    print(metric, drift_metrics[metric])
+```
+
+>You can also visualize the data drift metrics in Azure Machine Learning studio by following these steps:
+>On the Datasets page, view the Dataset monitors tab.
+> - Click the data drift monitor you want to view.
+> - Select the date range over which you want to view data drift metrics (if the column chart does not show multiple weeks of data, wait a minute or so and click Refresh).
+> - Examine the charts in the Drift overview section at the top, which show overall drift magnitude and the drift contribution per feature.
+> - Explore the charts in the Feature detail section at the bottom, which enable you to see various measures of drift for individual features.
+
+
 
 
 
