@@ -272,7 +272,102 @@ for metric in drift_metrics:
 > - Explore the charts in the Feature detail section at the bottom, which enable you to see various measures of drift for individual features.
 
 
+# Detect and Mitigate Unfairness in Models BIAS!!
+> Fairlearn package (In preview)
+>> [FAIRNESS CHECKLIST](https://www.microsoft.com/en-us/research/publication/co-designing-checklists-to-understand-organizational-challenges-and-opportunities-around-fairness-in-ai/)
 
+
+> You begin by setting a range or creating group ranges so that metrics can be compared for the groups/ranges
+```python
+# Change value to represent age groups
+S['Age'] = np.where(S.Age > 50, 'Over 50', '50 or younger')
+```
+
+> You can then create a MetricsFrame for accurracy, precision, recall (if classification) as seen below
+
+```python
+!pip show azureml-contrib-fairness
+!pip install --upgrade fairlearn==0.7.0 raiwidgets
+
+
+### NOTE THE BELOW
+from fairlearn.metrics import selection_rate, MetricFrame
+
+
+from sklearn.metrics import accuracy_score, recall_score, precision_score
+
+
+from fairlearn.metrics import selection_rate, MetricFrame
+from sklearn.metrics import accuracy_score, recall_score, precision_score
+
+# Get predictions for the witheld test data
+y_hat = diabetes_model.predict(X_test)
+
+# Get overall metrics
+print("Overall Metrics:")
+# Get selection rate from fairlearn
+overall_selection_rate = selection_rate(y_test, y_hat) # Get selection rate from fairlearn
+print("\tSelection Rate:", overall_selection_rate)
+# Get standard metrics from scikit-learn
+overall_accuracy = accuracy_score(y_test, y_hat)
+print("\tAccuracy:", overall_accuracy)
+overall_recall = recall_score(y_test, y_hat)
+print("\tRecall:", overall_recall)
+overall_precision = precision_score(y_test, y_hat)
+print("\tPrecision:", overall_precision)
+
+
+### NOTE THAT THE METRICS ARE BEING DEFINED FOR EACH OF THE GROUPS YOU ARE INTERESTED IN, SEPARATELY!!!
+# Get metrics by sensitive group from fairlearn
+print('\nMetrics by Group:')
+metrics = {'selection_rate': selection_rate,
+           'accuracy': accuracy_score,
+           'recall': recall_score,
+           'precision': precision_score}
+
+group_metrics = MetricFrame(metrics=metrics,
+                             y_true=y_test,
+                             y_pred=y_hat,
+                             sensitive_features=S_test['Age'])
+
+print(group_metrics.by_group)
+
+
+```
+> Metrics by Group:
+              selection_rate  accuracy    recall precision
+Age                                                       
+50 or younger       0.301491  0.893981  0.827778  0.818681
+Over 50             0.714286   0.89418  0.945736  0.903704
+
+> Selection rate means the fraction of datapoints in each class classified as 1 (in binary classification) or distribution of prediction values (in regression).
+
+
+
+# Registering the built model
+```python
+from azureml.core import Workspace, Experiment, Model
+import joblib
+import os
+
+# Load the Azure ML workspace from the saved config file
+ws = Workspace.from_config()
+print('Ready to work with', ws.name)
+
+# Save the trained model
+model_file = 'diabetes_model.pkl'
+joblib.dump(value=diabetes_model, filename=model_file)
+
+# Register the model
+print('Registering model...')
+registered_model = Model.register(model_path=model_file,
+                                  model_name='diabetes_classifier',
+                                  workspace=ws)
+model_id= registered_model.id
+
+
+print('Model registered.', model_id)
+```
 
 
 
