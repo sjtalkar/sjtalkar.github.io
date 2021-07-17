@@ -1,4 +1,10 @@
 # Know for the exam (from the webinars for DP-100)
+
+## PIPELINE VISUALIZED
+
+[Workspce, dataset, compute, run](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Run%20A%20Pipeline%20-%201.JPG)
+
+
 ```python
 import azureml.core
 from azureml.core import Workspace, Experiment, Run
