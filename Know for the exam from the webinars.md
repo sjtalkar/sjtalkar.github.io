@@ -8,6 +8,15 @@
 | Azure ML Compute Instance      | CPU     | Real Time                |
 | Azure ML Container Instance    | CPU     | Low scale Test/debugging |
 
+## Compute targets for hyperparameters
+| Requirement                                                                                | Compute Target           |
+|--------------------------------------------------------------------------------------------|--------------------------|
+| Tune hyperparameters using Azure Machine Learning Designer                                 | Azure ML Compute Cluster |
+| Use your own virtual machine, attached to your virtual network, for hyperparameter tuning. | Remote VM                |
+| Use Apache Spark to train your model                                                       | Azure HDInsight          |
+| Auto scale instances for models based on compute requirements                              | Azure ML compute cluster |
+
+
 
 ## PIPELINE VISUALIZED
 
