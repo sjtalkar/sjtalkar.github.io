@@ -1,5 +1,14 @@
 # Know for the exam (from the webinars for DP-100)
 
+## Compute Configuration Comparison
+| Type of compute                | GPU/CPU | Real Time/Batch          |
+|--------------------------------|---------|--------------------------|
+| Azure Kubernetes Service (AKS) | GPU     | Real Time                |
+| Azure ML Compute Clusters      | GPU     | Batch                    |
+| Azure ML Compute Instance      | CPU     | Real Time                |
+| Azure ML Container Instance    | CPU     | Low scale Test/debugging |
+
+
 ## PIPELINE VISUALIZED
 
 ![Workspce, dataset, compute, run](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Run%20A%20Pipeline%20-%201.JPG)
@@ -376,6 +385,12 @@ print('Model registered.', model_id)
 ```
 
 # [Detailed Detour Into Hyperparameters](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Hyperparametertuning.md)
+
+
+
+
+### Acknowledgements
+[Markdown Table generation site](https://www.tablesgenerator.com/markdown_tables)
 
 
 
