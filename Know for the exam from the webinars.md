@@ -375,6 +375,9 @@ model_id= registered_model.id
 print('Model registered.', model_id)
 ```
 
+# [Detailed Detour Into Hyperparameters](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Hyperparametertuning.md)
+
+
 
 
 
