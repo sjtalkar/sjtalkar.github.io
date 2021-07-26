@@ -152,6 +152,35 @@ run = experiment.submit(config=script_config)
 run.wait_for_completion(show_output=True)
 ```
 
+## Batch Inferencing Pipeline Data Pipeline Config and Pipeline Steps
+```python
+
+output_dir = PipelineData(name='inferences', 
+                          datastore=default_ds, 
+                          output_path_on_compute='diabetes/results')
+
+parallel_run_config = ParallelRunConfig(
+    source_directory=experiment_folder,
+    entry_script="batch_diabetes.py",
+    mini_batch_size="5",
+    error_threshold=10,
+    output_action="append_row",
+    environment=batch_env,
+    compute_target=inference_cluster,
+    node_count=2)
+
+parallelrun_step = ParallelRunStep(
+    name='batch-score-diabetes',
+    parallel_run_config=parallel_run_config,
+    inputs=[batch_data_set.as_named_input('diabetes_batch')],
+    output=output_dir,
+    arguments=[],
+    allow_reuse=True
+)
+
+```
+
+
 ## Questions from part 1 
 
 1. You want to develop a Machine Learning Model using R. Which application will provide you the tools you need.
