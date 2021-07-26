@@ -422,7 +422,43 @@ model_id= registered_model.id
 print('Model registered.', model_id)
 ```
 
+
 # [Detailed Detour Into Hyperparameters](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Hyperparametertuning.md)
+
+
+# Interpretability
+
+| Interpretability Technique                     | Type           |
+|------------------------------------------------|----------------|
+| SHAP Tree explainer                            | Model-Specific |
+| SHAP Deep explainer                            | Model-Specific |
+| SHAP Linear-explainer                          | Model-Specific |
+| SHAP Kernel explainer                          | Model-Agnostic |
+| Mimic-Explainer (Global Surrogate)             | Model-Agnostic |
+| Permutation Feature Importance Explainer (PFI) | Model-Agnostic |
+
+**SHAP explainer**: based on Game Theory
+
+**Mimic Explainer (GLoabl Surrogate)**: based on the idea of training global surrogate models to mimic blackbox models. A global surrogate model is an intrinsically interpretable model that is trained to approximate the predictions of any black box model as accurately as possible. Data scientists can interpret the surrogate model to draw conclusions about the black box model.
+
+**PFI :** At a high level, the way it works is by randomly shuffling data one feature at a time for the entire dataset and calculating how much the performance metric of interest changes. The larger the change, the more important that feature is.
+
+Besides the interpretability techniques described above, Azure ML supports another **SHAP-based explainer**, called **TabularExplainer**. Depending on the model, TabularExplainer uses one of the supported SHAP explainers:
+
+- TreeExplainer for all tree-based models
+- DeepExplainer for DNN models
+- LinearExplainer for linear models
+- KernelExplainer for all other models
+
+**Dataset formats** supported by **azureml.interpret** package
+The azureml.interpret package of the SDK supports models trained with the following dataset formats:
+
+- numpy.array
+- pandas.DataFrame
+- iml.datatypes.DenseData
+- scipy.sparse.csr_matrix
+
+
 
 
 
