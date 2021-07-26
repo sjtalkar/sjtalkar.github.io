@@ -325,6 +325,22 @@ for metric in drift_metrics:
 > - Explore the charts in the Feature detail section at the bottom, which enable you to see various measures of drift for individual features.
 
 
+# Data imbalance
+## SMOTE
+The SMOTE module in Azure Machine Learning designer can be used to increase the number of underrepresented cases in a dataset that's used for machine learning. SMOTE is a better way of increasing the number of rare cases than simply duplicating existing cases.
+
+You connect the SMOTE module to a dataset that's imbalanced. There are many reasons why a dataset might be imbalanced. For example, the category you're targeting might be rare in the population, or the data might be difficult to collect. Typically, you use SMOTE when the class that you want to analyze is underrepresented.
+
+The module returns a dataset that contains the original samples. It also returns a number of synthetic minority samples, depending on the percentage that you specify.
+
+### More about SMOTE
+Synthetic Minority Oversampling Technique (SMOTE) is a statistical technique for increasing the number of cases in your dataset in a balanced way. The module works by generating new instances from existing minority cases that you supply as input. This implementation of SMOTE does not change the number of majority cases.
+
+The new instances are not just copies of existing minority cases.Instead, the algorithm takes samples of the **feature space** for each **target class** and its **nearest neighbors**. The algorithm then generates **new examples** that combine **features of the target** case with **features of its neighbors**. This approach **increases the features available to each class and makes the samples more general**.
+
+
+> When you're publishing a model that uses the SMOTE module, remove SMOTE from the predictive pipeline before it's published as a web service. The reason is that SMOTE is intended for improving a model during training, not for scoring. You might get an error if a published predictive pipeline contains the SMOTE module.
+
 # Detect and Mitigate Unfairness in Models BIAS!!
 > Fairlearn package (In preview)
 >> [FAIRNESS CHECKLIST](https://www.microsoft.com/en-us/research/publication/co-designing-checklists-to-understand-organizational-challenges-and-opportunities-around-fairness-in-ai/)
