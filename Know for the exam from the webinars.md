@@ -475,6 +475,7 @@ The azureml.interpret package of the SDK supports models trained with the follow
 - scipy.sparse.csr_matrix
 
 
+# [Detour into Data Labeling](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/DataLabeling.md)
 
 
 
