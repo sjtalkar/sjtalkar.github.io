@@ -70,17 +70,18 @@ The read structure is similar to that in Pandas in that you can specify delimiti
 
 For instance to read an Inside AirBnB csv file that has way too many columns to define schema on (not that it cannot be laboriously performed), we can set inferSchema to True (this unfortunately ensures a job will be created). If the records can possible broken up by a newline character, set multiline to True.
 
-[Spark Multiline]]https://sparkbyexamples.com/spark/spark-read-multiline-multiple-line-csv-file/
+[Spark Multiline](https://sparkbyexamples.com/spark/spark-read-multiline-multiple-line-csv-file/)
 
 You will also notice escape set to the double quotes character- this is to preserve the qutotes in string. The difference in amenities column with and without double quotes can be seen as:
 This string with escape = '"' set
 
 {TV,"Cable TV",Internet,Wifi,Kitchen,"Pets live on this property",Dog(s),Heating,"Family/kid friendly",Washer,Dryer,"Smoke detector","Carbon monoxide detector","First aid kit",Essentials,Shampoo,"24-hour check-in",Hangers,"Hair dryer",Iron,"Laptop friendly workspace","Self check-in",Keypad,"Private entrance","Pack ’n Play/travel crib","Room-darkening shades"}
 
-Turns to this is double quotes is not escaped:
+Turns to this if double quotes is not escaped:
+
 "{TV,""Cable TV""
 
-In Databricks, the diplay function prettifies the Dataframe so that you can see the data in rows muc better than if you use Spark's show
+In Databricks, the display function prettifies the Dataframe so that you can see the data in rows muc better than if you use Spark's show
 
 !["Display of Table"](https://github.com/sjtalkar/DP-100AzureSupervisedUnsupervisedDatabricksAndSpark/blob/main/Pictures%20for%20Readme/DBDisplay.JPG)
 
