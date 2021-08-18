@@ -455,7 +455,7 @@ print('Model registered.', model_id)
 
 **SHAP explainer**: based on Game Theory
 
-**Mimic Explainer (GLoabl Surrogate)**: based on the idea of training global surrogate models to mimic blackbox models. A global surrogate model is an intrinsically interpretable model that is trained to approximate the predictions of any black box model as accurately as possible. Data scientists can interpret the surrogate model to draw conclusions about the black box model.
+**Mimic Explainer (Global Surrogate)**: based on the idea of training global surrogate models to mimic blackbox models. A global surrogate model is an intrinsically interpretable model that is trained to approximate the predictions of any black box model as accurately as possible. Data scientists can interpret the surrogate model to draw conclusions about the black box model.
 
 **PFI :** At a high level, the way it works is by randomly shuffling data one feature at a time for the entire dataset and calculating how much the performance metric of interest changes. The larger the change, the more important that feature is.
 
