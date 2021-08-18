@@ -344,7 +344,7 @@ The new instances are not just copies of existing minority cases.Instead, the al
 # Detect and Mitigate Unfairness in Models BIAS!!
 > Fairlearn package (In preview)
 >> [FAIRNESS CHECKLIST](https://www.microsoft.com/en-us/research/publication/co-designing-checklists-to-understand-organizational-challenges-and-opportunities-around-fairness-in-ai/)
-
+>> [Youtube video for FairLearn package](https://www.youtube.com/watch?v=Ts6tB2p97ek)
 
 > You begin by setting a range or creating group ranges so that metrics can be compared for the groups/ranges
 ```python
