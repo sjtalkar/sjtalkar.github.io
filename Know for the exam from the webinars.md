@@ -477,7 +477,21 @@ The azureml.interpret package of the SDK supports models trained with the follow
 
 # [Detour into Data Labeling](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/DataLabeling.md)
 
+# Differential Privacy to offer "Plausible Deniability"
 
+> Privacy - Accuracy Trade-off
+
+
+When users analyze data, they typically use the raw data. This is a concern because it might infringe on an individual's privacy. Differential privacy tries to deal with this problem by adding "noise" or randomness to the data so that users can't identify any individual data points. At the least, such a system provides plausible deniability. Therefore, the privacy of individuals is preserved with limited impact on the accuracy of the data.
+
+When a user submits a query for data, operations known as privacy mechanisms add noise to the requested data. Privacy mechanisms return an approximation of the data instead of the raw data. This privacy-preserving result appears in a **report. Reports consist of two parts, the actual data computed and a description of how the data was created.**
+
+> Metrics for configuration **Epsilon**
+Differential privacy tries to protect against the possibility that a user can produce an indefinite number of reports to eventually reveal sensitive data. A value known as epsilon measures how noisy or private a report is. Epsilon has an inverse relationship to noise or privacy. The lower the epsilon, the more noisy (and private) the data is.
+As you implement differentially private systems, you want to produce reports with epsilon values between 0 and 1.
+
+>  In data analytics, accuracy can be thought of as a measure of uncertainty introduced by sampling errors.
+SmartNoise is an open-source project that contains different components for building global differentially private systems.
 
 
 ### Acknowledgements
