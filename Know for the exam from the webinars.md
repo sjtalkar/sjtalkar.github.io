@@ -1,5 +1,13 @@
 # Know for the exam (from the webinars for DP-100)
 
+## Practice the code with various datasets using sample template Azure ML notebooks
+
+> Access the notebooks by creating a compute instance resource in Azure ML studio
+![Start a compute resource in Azure Machine Learning Studio](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Compute%20resource.JPG)
+
+> Access the Jupyter Notebook within it and then the Azure ML sample notebooks tab
+![Azure Ample Notebooks](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Azure%20sample%20resources.JPG)
+
 ## Compute Configuration Comparison
 | Type of compute                | GPU/CPU | Real Time/Batch          |
 |--------------------------------|---------|--------------------------|
