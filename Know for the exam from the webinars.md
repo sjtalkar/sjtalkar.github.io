@@ -26,6 +26,16 @@
 
 
 
+## Various Run configs 
+> ScriptRunConfig : for training scipt and creating metrics for a model
+> InferenceRunConfig: for testing deployed model
+> ParallelRunConfig: for parallel batch processing 
+
+All the above have the foloowing arguments in common
+-     environment=predict_env,
+-    compute_target=compute_target, 
+
+
 ## PIPELINE VISUALIZED
 
 ![Workspce, dataset, compute, run](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Run%20A%20Pipeline%20-%201.JPG)
