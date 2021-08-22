@@ -8,6 +8,23 @@
 > Access the Jupyter Notebook within it and then the Azure ML sample notebooks tab
 ![Azure Ample Notebooks](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Azure%20sample%20resources.JPG)
 
+
+## Some notable notebooks to study
+
+[Using the pipeline parameter in training and deployment](https://simit1.westus2.instances.azureml.ms/examples/preview?example_id=how-to-use-azureml%2Fmachine-learning-pipelines%2Fintro-to-pipelines%2Faml-pipelines-showcasing-dataset-and-pipelineparameter.ipynb)
+
+```python
+file_dataset = Dataset.File.from_files('https://dprepdata.blob.core.windows.net/demo/Titanic.csv')
+file_pipeline_param = PipelineParameter(name="file_ds_param", default_value=file_dataset)
+file_ds_consumption = DatasetConsumptionConfig("file_dataset", file_pipeline_param).as_mount()
+
+tabular_dataset = Dataset.Tabular.from_delimited_files('https://dprepdata.blob.core.windows.net/demo/Titanic.csv')
+tabular_pipeline_param = PipelineParameter(name="tabular_ds_param", default_value=tabular_dataset)
+tabular_ds_consumption = DatasetConsumptionConfig("tabular_dataset", tabular_pipeline_param)
+
+#When creating a PythonScriptStep : Note that the file_ds_consumption and tabular_ds_consumption are specified as both arguments and inputs to create a step.
+```
+
 ## [Deep Dive to types of compute targets for training and inferencing](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-attach-compute-targets)
 
 ## Compute Configuration Comparison
