@@ -8,6 +8,8 @@
 > Access the Jupyter Notebook within it and then the Azure ML sample notebooks tab
 ![Azure Ample Notebooks](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Azure%20sample%20resources.JPG)
 
+## [Deep Dive to types of compute targets for training and inferencing](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-attach-compute-targets)
+
 ## Compute Configuration Comparison
 | Type of compute                | GPU/CPU | Real Time/Batch          |
 |--------------------------------|---------|--------------------------|
