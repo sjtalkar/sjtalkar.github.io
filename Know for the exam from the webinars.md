@@ -17,7 +17,7 @@ In addition to classification, regression and clustering, you will also work wit
 
  As you read the answer explanations provided in the practice test, **make sure you follow the reference links**. These links provide code snippets which will introduce you to classes and functions and you will be tested on the various constructor arguments, their usage and defaults. Familiarize yourself with the names of the classes well as they will be provided as options to choose from in dropdowns in code snippet questions.
 
- But I found that the official practice test site does NOT keep up with the updated content of the exam. Since new topics are added with regularity, you do need to pay close attention to the additional skills that you will be tested in in the "exam skills outline" document provided. My test contained three questions on DataDrift and one Fairlearn package.
+ But I found that the official practice test site does NOT keep up with the updated content of the exam. Since new topics are added with regularity, you do need to pay close attention to the additional skills that you will be tested in in the "exam skills outline" document provided. My test contained three questions on DataDrift and one on the Fairlearn package which were introduced a few months prior to my taking the test.
 
 > 3. Practice the code with various datasets using sample template Azure ML notebooks
 
