@@ -2,8 +2,73 @@
 
 Coinciding with Milestone 1 at the University of Michigan's Master in Applied Data Science, I decided to familiarize myself with cloud implementation of machine learning. The Azure subscription provided to me by CSGPro gave me all I needed to not just acquaint myself but to also explore and depp-dive into machine learning through code, through AutoML and through Azure Machine Learning Designer (no code option).
 
+>  [**MS Learn**](https://docs.microsoft.com/en-us/learn/certifications/exams/dp-100)
+    > - Make sure you download and read the skills outline document as it is updated with regularity
+The MADS courses in Supervised and Unsupervised Learning introduced me to Python implementations of regression, classification and clustering algorithms. This was the foundational brickwork which **MS Learns'** excellent sample tutorials cemented and strengthened.
+
+In addition to classification, regression and clustering, you will also work with PyTorch and TensorFlow notebooks. There are challenge datasets for you to sharpen your skills on. This provides an excellent opportunity to familiarize yourself with the Azure Machine Learning Studio and Workspace.
+
+> [Official practice test](https://www.mindhub.com/dp-100-designing-and-implementing-a-data-science-solution-on-azure-microsoft-official-practice-test/p/MU-DP-100?utm_source=microsoft&utm_medium=certpage&utm_campaign=msofficialpractice)
+
+ Each module in MS Learn provides the structure required to cover all the material from which the exam questions will be drawn. But you are left wondering how much of the code is to be committed to memory. My recommendation is to sign up for the official practice test that gives you an idea about the **format** of the test and the kind of questions you will encounter. 
+
+ As you read the answer explanations provided in the practice test, **make sure you follow the reference links**. These links provide code snippets which will introduce you to classes and functions and you will be tested on the various constructor arguments, their usage and defaults. Familiarize yourself with the names of the classes well as they will be provided as options to choose from in dropdowns in code snippet questions.
+
+ But I found that the official practice test site does NOT keep up with the updated content of the exam. Since new topics are added with regularity, you do need to pay close attention to the additional skills that you will be tested in in the "exam skills outline" document provided. My test contained three questions on DataDrift and one Fairlearn package.
+
+> Practice the code with various datasets using sample template Azure ML notebooks
+
+As you go through the Official Practice  Tests, read, implement and execute the sample notebooks simultaneously. The **text cells** in the notebooks will give you a good understanding of ML workkflow, from setting up a workspace, loading datasets, creating pipelines, publishing and deploying models to real time and batch inferencing. 
+
+> - Access the notebooks by creating a compute instance resource in Azure ML studio
+![Start a compute resource in Azure Machine Learning Studio](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Compute%20resource.JPG)
+
+> - Access the Jupyter Notebook within it and then the Azure ML sample notebooks tab
+![Azure Ample Notebooks](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Azure%20sample%20resources.JPG)
+
+> [Read the documentation](https://docs.microsoft.com/en-us/azure/machine-learning/)
+Since this is quite vast, you might find it easier to refer to this a topic at a time as you go through MS Learn modules or the Official Practice test questions.
 
 
+ My test was 43 questions (with some of the questions having subsections) long and I was given 120 minutes to complete it in.
+
+Broad categorization  of some the questions I recollect from the test:
+
+> New topics covered
+ > - [Datadrift](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-monitor-datasets?tabs=python)
+     [Microsoft Developer Intro to Datadrift](https://www.youtube.com/watch?v=qz1S-tv6iZs)
+
+  - Concept of  backfill
+  - Setting up an alert 
+  - Scheduling
+
+ > - [Fairlearn](https://www.youtube.com/watch?v=Ts6tB2p97ek&t=464s)
+    What kind of models it works on
+ > - Differential privacy (adding noise)
+
+
+> Understand the various computes and the scenarios where each type of compute is most efficient. The official practice text covers this topic very well.
+
+> [TSV file question as it appeared in the test](https://www.exam4training.com/you-have-an-azure-blob-container-that-contains-a-set-of-tsv-files-the-azure-blob-container-is-registered-as-a-datastore-for-an-azure-machine-learning-service-workspace-each-tsv-file-uses-the-same-da/)
+
+
+> Dataset registration
+	> - Understand the purpose of tags and versions 
+	
+> [Logging](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-log-view-metrics)
+
+> [AutoML Forecasting](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-forecast) - max_horizon
+
+> [Azure Designer](https://docs.microsoft.com/en-us/azure/machine-learning/algorithm-module-reference/module-reference) : Modulle names - for Execute Python Script, Create Python Module, SQL module 
+	
+> Security and authorization
+    - [Manage Users and Roles](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-assign-roles)
+   
+> [Explainer and Interpretability](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-machine-learning-interpretability-aml) - Feature Importance in Explainer download and create a table
+
+
+- [Model versioning and MLOps](https://docs.microsoft.com/en-us/azure/machine-learning/concept-model-management-and-deployment) 
+ 
 
 ## Practice the code with various datasets using sample template Azure ML notebooks
 
