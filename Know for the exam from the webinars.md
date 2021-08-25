@@ -2,6 +2,9 @@
 
 Coinciding with Milestone 1 at the University of Michigan's Master in Applied Data Science, I decided to familiarize myself with cloud implementation of machine learning. The Azure subscription provided to me by CSGPro gave me all I needed to not just acquaint myself but to also explore and depp-dive into machine learning through code, through AutoML and through Azure Machine Learning Designer (no code option).
 
+I have outlined the sequence in which I accessed resources and built up confidence to appear and pass the exam in a span of a month and a half.
+
+
 >  [**MS Learn**](https://docs.microsoft.com/en-us/learn/certifications/exams/dp-100)
     > - Make sure you download and read the skills outline document as it is updated with regularity
 The MADS courses in Supervised and Unsupervised Learning introduced me to Python implementations of regression, classification and clustering algorithms. This was the foundational brickwork which **MS Learns'** excellent sample tutorials cemented and strengthened.
