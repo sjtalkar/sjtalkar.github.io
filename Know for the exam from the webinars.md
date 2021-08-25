@@ -56,7 +56,7 @@ Since this is quite vast, you might find it easier to refer to this a topic at a
 
 #### 2. Understand the various computes and the scenarios where each type of compute is most efficient. The official practice text covers this topic very well.
 
-#### 3. [TSV file question as it appeared in the test](https://www.exam4training.com/you-have-an-azure-blob-container-that-contains-a-set-of-tsv-files-the-azure-blob-container-is-registered-as-a-datastore-for-an-azure-machine-learning-service-workspace-each-tsv-file-uses-the-same-da/)
+#### 3. [TSV file question as it may appear in the test](https://www.exam4training.com/you-have-an-azure-blob-container-that-contains-a-set-of-tsv-files-the-azure-blob-container-is-registered-as-a-datastore-for-an-azure-machine-learning-service-workspace-each-tsv-file-uses-the-same-da/)
 
 #### 4. Dataset registration
 	> - Understand the purpose of tags and versions 
