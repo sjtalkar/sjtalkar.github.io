@@ -1,4 +1,4 @@
-# Know for the exam (from the webinars for DP-100)
+# Know for the exam ( DP-100 Designing and Implementing a Data Science Solution on Azure)
 
 Coinciding with Milestone 1 at the University of Michigan's Master in Applied Data Science, I decided to familiarize myself with cloud implementation of machine learning. The Azure subscription provided to me by CSGPro gave me all I needed to not just acquaint myself but to also explore and depp-dive into machine learning through code, through AutoML and through Azure Machine Learning Designer (no code option).
 
