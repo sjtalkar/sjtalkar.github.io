@@ -31,7 +31,8 @@ As you go through the Official Practice  Tests, read, implement and execute the 
 
 ![Azure Ample Notebooks](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Azure%20sample%20resources.JPG)
 
-> [Read the documentation](https://docs.microsoft.com/en-us/azure/machine-learning/)
+
+> 4. [Read the documentation](https://docs.microsoft.com/en-us/azure/machine-learning/)
 Since this is quite vast, you might find it easier to refer to this a topic at a time as you go through MS Learn modules or the Official Practice test questions.
 
 
