@@ -1,5 +1,10 @@
 # Know for the exam (from the webinars for DP-100)
 
+Coinciding with Milestone 1 at the University of Michigan's Master in Applied Data Science, I decided to familiarize myself with cloud implementation of machine learning. The Azure subscription provided to me by CSGPro gave me all I needed to not just acquaint myself but to also explore and depp-dive into machine learning through code, through AutoML and through Azure Machine Learning Designer (no code option).
+
+
+
+
 ## Practice the code with various datasets using sample template Azure ML notebooks
 
 > Access the notebooks by creating a compute instance resource in Azure ML studio
