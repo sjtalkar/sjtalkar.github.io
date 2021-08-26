@@ -279,6 +279,15 @@ C(trout) = 2* N<sub>2</sub>/N<sub>1</sub>
 
 Probablity of absolute discounting = 
 Discounted bigram + Interpolation Weight
+ 
+[The need for measures other than accuracy](https://www.youtube.com/watch?v=jrAyRCa7aY8&list=PLLssT5z_DsK8HbD2sPcUIDfQ7zmBarMYv&index=30&t=184s)
+
+When the true positives are miniscule compared to the true negatives, it might be really easy to hit an accuracy value. 
+ 
+![Wighted Harmonic Mean of recall and Precision](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Wighted%20Harmonic%20of%20recall%20and%20Precision.JPG)
+ 
+ 
+ 
 
 
 
