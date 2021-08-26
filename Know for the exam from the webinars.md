@@ -67,9 +67,8 @@ Since this is quite vast, you might find it easier to refer to this a topic at a
 
 #### 7. [Azure Designer](https://docs.microsoft.com/en-us/azure/machine-learning/algorithm-module-reference/module-reference) : Modulle names - for Execute Python Script, Create Python Module, SQL module 
 	
-#### 8. Security and authorization
-    
-    [Manage Users and Roles](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-assign-roles)
+#### 8. [Security and authorization](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-assign-roles)
+	Manage users and roles
    
 #### 9. [Explainer and Interpretability](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-machine-learning-interpretability-aml) - Feature Importance in Explainer download and create a table
 
@@ -608,6 +607,11 @@ As you implement differentially private systems, you want to produce reports wit
 
 >  In data analytics, accuracy can be thought of as a measure of uncertainty introduced by sampling errors.
 SmartNoise is an open-source project that contains different components for building global differentially private systems.
+
+
+## Learning Beyond
+
+[NLP Notes](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/NLP%20course%20notes.md)
 
 
 ### Acknowledgements
