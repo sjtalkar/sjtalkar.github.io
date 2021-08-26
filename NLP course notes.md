@@ -217,6 +217,68 @@ Sum of $\lambda$ s equals 1
 - Now train its probablitlies like a normal word
 - At decoding time: Use UNK probabilities for any word not in training 
 
+### Unigram prior smoothing
+
+P<sub>Add-k</sub>(w<sub>i</sub> | w<sub>i-1</sub>) =
+
+(COUNT(w<sub>i-1</sub>, w<sub>i</sub>) + m(1/V) ) / (Count(w<sub>i-1</sub>) + m)
+
+
+P<sub>UnigramPrior</sub>(w<sub>i</sub> | w<sub>i-1</sub>) =
+
+(COUNT(w<sub>i-1</sub>, w<sub>i</sub>) + m P( w<sub>i</sub>)) / (Count(w<sub>i-1</sub>) + m)
+
+
+### Advanced smoothing algorithms
+- Use the count of things we've seen **ONCE** to help estimate the count of things we've NEVER SEEN
+
+- Good-Turing
+- Kneser-Ney
+- Witten-Bell
+
+#### Notation N<sub>c</sub> Frequency of frequency of c
+
+You are fishing and caught :
+10 carp, 3 perch, 2 whitefish, 1 trout, 1 salmon , 1 eel = 18 fish
+
+First create counts of all frequencies
+
+N<sub>1</sub> - which is count of everything that appears once = 3
+N<sub>2</sub> - which is count of everything that appears twice = 1
+N<sub>3</sub> - which is count of everything that appears thrice = 0
+
+How likely is it that next species is trout?
+- 1/18
+
+How likely is it that next species is new (catfish or bass)
+- Let's use our estimate of things we saw ONCE to estimate new things
+- 3/18 since N<sub>1</sub> = 3)
+
+Assuming so, how  likely is it that next species is trout?
+- Must be less than 1/18
+- How to estimate?
+
+P<sub>GT</sub>(things with zero frequency) = N<sub>1</sub>/N
+
+C<sup>*</sup> = (C+1) N<sub>C+1</sub>/N<sub>C</sub> / N
+
+##### Unseen (bass or catfish)
+c = 0 
+MLE =  0/18
+P<sub>GT</sub>(unseen) = N<sub>1</sub>/N = 3/18
+
+##### Seen once trout
+c= 1
+MLE p = 1/18
+Adjusted after bringing in probabilities of unknown
+C(trout) = 2* N<sub>2</sub>/N<sub>1</sub>
+
+= 2/3 / 18
+
+## Absolute Discounting Interpolation
+
+Probablity of absolute discounting = 
+Discounted bigram + Interpolation Weight
 
 
 
