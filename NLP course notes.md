@@ -144,10 +144,10 @@ Perplixity is related the the average branching factor.
 Weighted equivalent branching factor
 
 ## The Shannon Visualization method
-- Choose a random bigram according to its **probability** :            (<s>, I)
+- Choose a random bigram according to its **probability** :            (<\s>, I)
 - Now chosse a random bigram (w, x) according to **its probability**         I   want
-- And so on until we choose </s>                                                 want Bhel
-                                                                                      Bhel </s>
+- And so on until we choose <\/s>                                                 want Bhel
+                                                                                      Bhel <\/s>
 
 Then we string it all together to create the sentence.
 
