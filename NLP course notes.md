@@ -156,6 +156,10 @@ Then we string it all together to create the sentence.
 - Probability of having seen an n-gram can be zero - Perplexity is undefined.
 
 ## SMOOTHING
+Why 
+  - Becuase of zeroing out of certain words when not seen in original training corpus
+  - Helps with generalizations
+  - Works for words but not n-grams
 
 ### Add-one estimation or Laplace smoothing
 - Pretend that we saw each word one more time than we did.
@@ -182,7 +186,43 @@ Interpolation works better than Backoff
     - Surprise is inversely related to the probaility but we need to take the log of the probability since a probability of 1 (totally probable) will then give us a Surprise of 0
     - Low entropy implies low Surprise and is the avarage of the product of the probability and the surprise. 
 
- Read this? https://towardsdatascience.com/the-relationship-between-perplexity-and-entropy-in-nlp-f81888775ccc   
+** Read this?** https://towardsdatascience.com/the-relationship-between-perplexity-and-entropy-in-nlp-f81888775ccc   
+
+## Backoff and Interpolation
+
+Sometimes it helps to use **less** context
+- Backoff
+    - Use trigram if you have good evidence
+    - Otherwise bigram, otherwise unigram
+
+- Interpolation
+   - Mix unigram, bigram, trigram
+
+### Linear Interpolation
+- Simple Interpolation
+    P<sub>hat</sub>(w<sub>n</sub> | w<sub>n-1</sub> w<sub>n-2</sub>) 
+    =  $\lambda$ <sub>1</sub> P (w<sub>n</sub> | w<sub>n-1</sub> w<sub>n-2</sub>) 
+    + $\lambda$ <sub>2</sub> P (w<sub>n</sub> | w<sub>n-1</sub> ) 
+    + $\lambda$ <sub>3</sub> P (w<sub>n</sub> )
+
+Sum of $\lambda$ s equals 1
+
+
+## Out of Vocabulary words
+- Create an unknown word token <UNK>
+
+### Training of <UNK> probabilities
+- Create a fixed lexicon L of size V
+- At text normalization phase (dividing by count of the unigrams), any training word not in L changed to <UNK>
+- Now train its probablitlies like a normal word
+- At decoding time: Use UNK probabilities for any word not in training 
+
+
+
+
+
+
+
       
 
 
