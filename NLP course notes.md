@@ -30,17 +30,15 @@ A probabilistic model of word sequences could suggest that briefed reporters on 
 
 P("its water is so transparent") = P(its) * P(water | its) * P (is | its water) * P(so ! its water is) * P(transparent !its water is so)
 
-Could we jus count and divide?
+Could we just count and divide?
 - No Too many possible sentences
 - We'll never see enough data for estimating these
 
-The intuition of the n-gram model is that instead of computing the probability of a word given its entire history, we can approximate the history by just the last few
-words.
-The bigram model, for example, approximates the probability of a word given all the previous words P(wnjw1:n􀀀1) by using only the conditional probability of the
-preceding word P(wnjwn􀀀1). In other words, instead of computing the probabilityP(thejWalden Pond’s water is so transparent that) (3.5)
-we approximate it with the probability P(thejthat)
+The intuition of the n-gram model is that instead of computing the probability of a word given its entire history, we can approximate the history by just the last few words.
+The bigram model, for example, approximates the probability of a word given all the previous words P(w<sub>n</sub>|w<sub>1:n-1</sub>) by using only the conditional probability of the preceding word P(w<sub>n|</sub>w<sub>n-1</sub>). In other words, instead of computing the probability P(the|Walden Pond’s water is so transparent that) 
+we approximate it with the probability P(the|that)
 we are thus making the following approximation:
-P(wnjw1:n􀀀1)  P(wnjwn􀀀1)
+P(w<sub>n</sub>|w<sub>1:n-1</sub>) ~ P(w<sub>n<sub>|w</sub>n-1</sub>)
 
 ## Markov assumption
 
@@ -96,12 +94,12 @@ This is called **normalizing by the unigram**.
 
 Once you have each of these probabilities, you can calculate the sentence probability
 
-P(<s>I want english food</s>) =
-P(I|,<s>)
+P(<\s>I want english food</\s>) =
+P(I|,<\s>)
 * P(want | I)
 * P(english | want)
 * P(food | english)
-* P(</s>|food)
+* P(</\s>|food)
 
 
 #### We do everything in log space
