@@ -11,7 +11,8 @@
 6. The influencers can also be measures such as Count of support tickets per customer. In this particular scenario all the granularity is at customer level.
 7. The visual also has a Top Segments feature which creates "clusters" called segments with percentage influence on the target. The size of the cluster/segment is scaled by the number of data points in the cluster.
 8. Clicking on the cluster/segment gives you information about how many percentage points above the average the segment is in selecting the target category. It also provides the count of data points in that cluster.
-9. 
+9. Sometime an influencer can have big impact but can represent very little of the data. Counts can be used to show how many data points contributed to an influencer. Click on the Paint roller, Analyis -> enable counts. 
+10. The above will create a ring around each influencer that shows the fraction of data that influencer contains.
 
 
 
