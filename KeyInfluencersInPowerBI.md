@@ -9,7 +9,9 @@
 4. For featurs that are quantitatve rather than categorical, the visual might also choose to bin the quantitive values into ranges such as 0 or less, 0-29, 30 or morem to get insights such as to how longer tenure (time of association with company) affects the Ranking.
 5. For other quantitative variable, Power BI might elect to show the relationship as a regression line.
 6. The influencers can also be measures such as Count of support tickets per customer. In this particular scenario all the granularity is at customer level.
-7. 
+7. The visual also has a Top Segments feature which creates "clusters" called segments with percentage influence on the target. The size of the cluster/segment is scaled by the number of data points in the cluster.
+8. Clicking on the cluster/segment gives you information about how many percentage points above the average the segment is in selecting the target category. It also provides the count of data points in that cluster.
+9. 
 
 
 
