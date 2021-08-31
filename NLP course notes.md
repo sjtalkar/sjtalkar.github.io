@@ -325,6 +325,16 @@ Autocorrelation(L) =
 Covariancet(yt, yt+L) / Variancet(yt)
 
 The autocorrelation always lies in the range [−1, 1], although the value is almost always positive for very small values of L, and gradually drops off with increasing lag L. The positive correlation ** is a result of the fact that adjacent values of most time series are very similar,**  though the similarity drops off with increasing distance. High (absolute) values of the autocorrelation imply that the value at a given position in the series can be predicted as a function of the values in the immediately preceding window. This is, in fact, the key property that enables the use of the autoregressive model.
+ 
+ 
+ In the autoregressive model, the value of yt at time t is defined as a linear combination
+of the values in the immediately preceding window of length p.
+yt =
+<sup>p</sup><sub>i=1</sub>[$/sigma]ai · yt−i + c + ǫt 
+ 
+A model that uses the preceding window of length p is referred to as an AR(p) model. The values of the regression coefficients a1 . . . ap, c need to be learned from the training data. The larger the value of p, the greater the lag that one is willing to incorporate in the autocorrelations. The choice of p should be guided by the level of autocorrelation.
+ 
+Note that the model can be used effectively for forecasting future values, only if the key properties of the time series, such as the mean, variance, and autocorrelation do not change significantly with time.
 
 
 
