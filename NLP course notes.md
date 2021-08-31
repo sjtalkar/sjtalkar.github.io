@@ -287,7 +287,11 @@ When the true positives are miniscule compared to the true negatives, it might b
 ![Wighted Harmonic Mean of recall and Precision](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Wighted%20Harmonic%20of%20recall%20and%20Precision.JPG)
  
  
-# Staionarity
+# Stationarity
+ 
+ The window-based statistical parameters of a stationary time series can be estimated in a meaningful way because the parameters do not vary over different
+time windows. In such cases, the estimated statistical parameters are good predictors of future behavior. On the other hand, the current mean, variances, and statistical correlations of the series are not necessarily good predictors of future behavior in regression-based forecasting models for nonstationary series. Therefore, it is often advantageous to convert nonstationary series to stationary ones before forecasting analysis. After the forecasting has been performed on the stationary series, the predicted values are transformed back to the original representation, using the inverse transformation.
+ 
  
 The model you use to predict and forecast in a time series depends on whether the series is stationary or non-stationary.
 The characteristics of a stationary series :
@@ -301,7 +305,15 @@ If the series is stationary after differencing, then an appropriate model for th
 yi+1 = yi + ei+1
 Here, ei+1 corresponds to white noise with zero mean. A differenced time series would have t−1 values for a series of length t because it is not possible for the first value to be reflected in the transformed series. 
  
+A different approach is to use seasonal differences when it is known that the series is stationary after seasonal differencing. The seasonal differences are defined as follows:
+y′i = yi − yi−m (14.13)
+Here m is an integer greater than 1.
  
+ 14.3.1 Autoregressive Models
+Univariate time series contain a single variable that is predicted using autocorrelations. 
+Autocorrelations represent the correlations between adjacently located timestamps in aseries. Typically, the behavioral attribute values at adjacently located timestamps are positively correlated. The autocorrelations in a time series are defined with respect to a particular value of the lag L. Thus, for a time series y1, . . . yn, the autocorrelation at lag L is defined as the Pearson coefficient of correlation between yt and yt+L.
+
+ Autocorrelation(L) = Covariancet(yt, yt+L)/Variancet(yt)
 
 
 
