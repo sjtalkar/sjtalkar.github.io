@@ -287,6 +287,20 @@ When the true positives are miniscule compared to the true negatives, it might b
 ![Wighted Harmonic Mean of recall and Precision](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Wighted%20Harmonic%20of%20recall%20and%20Precision.JPG)
  
  
+# Staionarity
+ 
+The model you use to predict and forecast in a time series depends on whether the series is stationary or non-stationary.
+The characteristics of a stationary series :
+ Constant mean (the trend line is parallel to the time axis) $\mu$
+ Constant variance -volatility the height of the series is constant
+ No seasonality - correlation between lags is 0
+ 
+ A common approach used for converting time series to stationary forms is differencing. Ind ifferencing, the time series value yi is replaced by the difference between it and the previous value. Therefore, the new value y′i is as follows:
+y′i = yi − yi−1. (14.8)
+If the series is stationary after differencing, then an appropriate model for the data is:
+yi+1 = yi + ei+1
+Here, ei+1 corresponds to white noise with zero mean. A differenced time series would have t−1 values for a series of length t because it is not possible for the first value to be reflected in the transformed series. 
+ 
  
 
 
