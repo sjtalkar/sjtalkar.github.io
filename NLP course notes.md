@@ -314,6 +314,17 @@ Univariate time series contain a single variable that is predicted using autocor
 Autocorrelations represent the correlations between adjacently located timestamps in aseries. Typically, the behavioral attribute values at adjacently located timestamps are positively correlated. The autocorrelations in a time series are defined with respect to a particular value of the lag L. Thus, for a time series y1, . . . yn, the autocorrelation at lag L is defined as the Pearson coefficient of correlation between yt and yt+L.
 
  Autocorrelation(L) = Covariancet(yt, yt+L)/Variancet(yt)
+ 
+ [From textbook Data Mining by Charu Agarwal) 
+###  Autoregressive Models
+> Univariate time series contain a single variable that is predicted using autocorrelations.
+
+ Autocorrelations represent the correlations between adjacently located timestamps in a series. Typically, the behavioral attribute values at adjacently located timestamps are positively correlated. The autocorrelations in a time series are defined with respect to a particular value of the lag L. Thus, for a time series y1, . . . yn, the autocorrelation at lag L is defined as the Pearson coefficient of correlation between yt and yt+L.
+ 
+Autocorrelation(L) =
+Covariancet(yt, yt+L) / Variancet(yt)
+
+The autocorrelation always lies in the range [−1, 1], although the value is almost always positive for very small values of L, and gradually drops off with increasing lag L. The positive correlation ** is a result of the fact that adjacent values of most time series are very similar,**  though the similarity drops off with increasing distance. High (absolute) values of the autocorrelation imply that the value at a given position in the series can be predicted as a function of the values in the immediately preceding window. This is, in fact, the key property that enables the use of the autoregressive model.
 
 
 
