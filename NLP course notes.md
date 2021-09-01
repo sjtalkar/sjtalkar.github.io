@@ -298,31 +298,38 @@ When the true positives are miniscule compared to the true negatives, it might b
  The window-based statistical parameters of a stationary time series can be estimated in a meaningful way because the parameters do not vary over different
 time windows. In such cases, the estimated statistical parameters are good predictors of future behavior. On the other hand, the current mean, variances, and statistical correlations of the series are not necessarily good predictors of future behavior in regression-based forecasting models for nonstationary series. Therefore, it is often advantageous to convert nonstationary series to stationary ones before forecasting analysis. After the forecasting has been performed on the stationary series, the predicted values are transformed back to the original representation, using the inverse transformation.
  
+ White noise is the strongest form of stationarity with zero mean, constant variance, and zero covariance between series values separated by a fixed lag.
  
 The model you use to predict and forecast in a time series depends on whether the series is stationary or non-stationary.
 The characteristics of a stationary series :
  Constant mean (the trend line is parallel to the time axis) $\mu$
  Constant variance -volatility the height of the series is constant
- No seasonality - correlation between lags is 0
+ No seasonality - correlation between lags is 0 in the case of white noise
  
- A common approach used for converting time series to stationary forms is differencing. Ind ifferencing, the time series value yi is replaced by the difference between it and the previous value. Therefore, the new value y′i is as follows:
-y′i = yi − yi−1. (14.8)
+ 
+ On the other hand, the current mean, variances, and statistical correlations of the series are not necessarily good predictors of future behavior in regression-based
+forecasting models for nonstationary series. Therefore, it is often advantageous to convert nonstationary series to stationary ones before forecasting analysis.
+
+**This is referred to as covariance stationarity: The key observation is that it is much easier to either obtain or convert to series that exhibit weak stationarity properties. In such cases, unlike white noise, the mean of the series, and the covariance between approximately adjacent time series values may be nonzero but constant over time.  Useful for forecasting models that are dependent on specific parameters such as the mean and covariance.**
+
+**In other nonstationary series, the average value of the series can be described by a trend-line that is not necessarily horizontal, as required by a stationary series. Periodically, the series will deviate from the trend line, possibly because of some changes in the generative process, and then return to
+the trend line. This is referred to as a trend stationary series.Also very useful for creating effective forecasting models.**
+ 
+ A common approach used for converting time series to stationary forms is differencing. In differencing, the time series value <sub>i</sub> is replaced by the difference between it and the previous value. Therefore, the new value y′i is as follows:
+y′i = y<sub>i</sub> − y<sub>i−1</sub> 
 If the series is stationary after differencing, then an appropriate model for the data is:
-yi+1 = yi + ei+1
+yi+1 = y<sub>i</sub> + e<sub>i+1</sub>
 Here, ei+1 corresponds to white noise with zero mean. A differenced time series would have t−1 values for a series of length t because it is not possible for the first value to be reflected in the transformed series. 
+ 
+In some cases, such as geometrically increasing series, the logarithm function is applied to the values in the series, before the differencing operation. For example, consider a time series of prices that increase at an approximately constant inflation factor. It may be useful to apply the logarithm function to the time series values, before the differencing operation. 
+ 
+ 
  
 A different approach is to use seasonal differences when it is known that the series is stationary after seasonal differencing. The seasonal differences are defined as follows:
 y′i = yi − yi−m (14.13)
 Here m is an integer greater than 1.
- 
- 14.3.1 Autoregressive Models
-Univariate time series contain a single variable that is predicted using autocorrelations. 
-Autocorrelations represent the correlations between adjacently located timestamps in aseries. Typically, the behavioral attribute values at adjacently located timestamps are positively correlated. The autocorrelations in a time series are defined with respect to a particular value of the lag L. Thus, for a time series y1, . . . yn, the autocorrelation at lag L is defined as the Pearson coefficient of correlation between yt and yt+L.
 
- Autocorrelation(L) = Covariancet(yt, yt+L)/Variancet(yt)
- 
- [From textbook Data Mining by Charu Agarwal) 
- 
+
 ### Handling missing values 
 
 It is common for time series data to contain missing values. Furthermore, the values of the series may not be synchronized in time when they are collected by independent sensors. It is often convenient to have time series values that are equally spaced and synchronized across different behavioral attributes for data processing.
@@ -359,18 +366,26 @@ The autocorrelation always lies in the range [−1, 1], although the value is al
  In the autoregressive model, the value of yt at time t is defined as a linear combination
 of the values in the immediately preceding window of length p.
 yt =
-<sup>p</sup><sub>i=1</sub>[$/sigma]ai · yt−i + c + ǫt 
+<sup>p</sup><sub>i=1</sub>[$/sigma]ai · y<sub>t−i</sub> + c + ǫt 
  
 A model that uses the preceding window of length p is referred to as an AR(p) model. The values of the regression coefficients a1 . . . ap, c need to be learned from the training data. The larger the value of p, the greater the lag that one is willing to incorporate in the autocorrelations. The choice of p should be guided by the level of autocorrelation.
  
-Note that the model can be used effectively for forecasting future values, only if the key properties of the time series, such as the mean, variance, and autocorrelation do not change significantly with time.
+Note that the model can be used effectively for forecasting future values, only if the key properties of the time series, such as the mean, variance, and autocorrelation do not change significantly with time. Because the autocorrelation often reduces with increasing values of the lag L, a value of p should be selected, so that the autocorrelation at lag L = p is small.
+The coefficients a1, . . . ap, c can be approximated with least-squares regression, to minimize the square-error of the overdetermined system.
 
+**Specifically, the R2-value **
+which is also referred to as the coefficient of determination, measures the ratio of the white
+noise to the series variance:
+R<sup>2</sup> = 1− Mean<sub>t</sub> (ǫ<sup>2</sup>t )/ Variancet(y <sub>t</sub>)
 
+The coefficient of determination quantifies the fraction of variability in the series that is explained by the regression, as opposed to random noise. It is therefore desirable for this coefficient to be as close to 1 as possible.
 
+## > Autoregressive Moving Average Models
 
+While autocorrelation is a useful predictive property of time series, it does not always explain all the variations. In fact, the unexpected component of the variations (shocks), does impact future values of the time series. This component can be captured with the use of a moving average model (MA). The moving average model predicts subsequent series values on the basis of the past history of deviations from predicted values. A deviation from a predicted value can be viewed as white noise, or a shock. This model is best used in scenarios where the behavioral attribute value at a timestamp is dependent on the history of shocks in the time series,
+rather than the actual series values.
 
-
-      
+y<sub>t</sub> = <subi=1</sub>[$/sigma]qi=b<sub>i</sub> · ǫ<sub>t−i</sub> + c + ǫ<sub>t</sub>
 
 
 
