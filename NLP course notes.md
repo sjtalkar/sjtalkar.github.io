@@ -233,9 +233,21 @@ P<sub>UnigramPrior</sub>(w<sub>i</sub> | w<sub>i-1</sub>) =
 - Use the count of things we've seen **ONCE** to help estimate the count of things we've NEVER SEEN
 
 - Good-Turing
-- Kneser-Ney
+- [Kneser-Ney](https://www.youtube.com/watch?v=cbAxvpBFyNU&t=358s)
 - Witten-Bell
 
+From above talk on Knesey-Ney:
+Used for probability of an n-gram based on other n-grams
+- Not every probability of a word following another word can exist and can lead to error.
+- Better estimate of probabilties of lower-order unigrams Probablity of singleton and not just tuples- This is because some words are more frequesnt in the context of 
+another word. Such as Fransisco is more frequent in the context of San
+- The unigram us useful exactly when we haven't seen this bigram. For insttance say we want to complete a sentence I am lookig for my reading -----------. If Fransisco as a unigram has a gigher probability than glasses, then you might use that unigram probability to use Fransisco (when BACKING-off) but it's probability in the context is not being considered.
+- P<continuation> -- Instead of considereing unigram probabiliies, we need to look into the set of preceding words that a particular word will complete (in a bi0gram model)
+ Every bigram type was a novelcontinuation the first time it was seen.
+ 
+
+
+ 
 
 
 
@@ -386,6 +398,17 @@ While autocorrelation is a useful predictive property of time series, it does no
 rather than the actual series values.
 
 y<sub>t</sub> = <subi=1</sub>[$/sigma]qi=b<sub>i</sub> · ǫ<sub>t−i</sub> + c + ǫ<sub>t</sub>
+
+The parameter c is the mean of the time series. The values of b1 . . . bq are the coefficients that need to be learned from the data. The moving average model is quite different from the autoregressive model, in that it relates the **current value to the mean of the series and the previous history of deviations from
+forecasts,** rather than the actual values.
+
+A more general model may be obtained by combining the power of both the autoregressive model and the moving average model. The idea is to learn the appropriate impact of
+both the autocorrelations and the shocks in predicting time series values. The two models can be combined with p autoregressive terms and q moving average terms. This model is referred to as the ARMA model.
+
+yt = p i=1 ai · yt−i + q i=1 bi · ǫt−i + c + ǫt
+
+In general, it is advisable to select the values of p and q as small as possible, so that the model fits the data well
+
 
 
 
