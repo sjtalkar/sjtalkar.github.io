@@ -243,7 +243,8 @@ Used for probability of an n-gram based on other n-grams
 another word. Such as Fransisco is more frequent in the context of San
 - The unigram us useful exactly when we haven't seen this bigram. For insttance say we want to complete a sentence I am lookig for my reading -----------. If Fransisco as a unigram has a gigher probability than glasses, then you might use that unigram probability to use Fransisco (when BACKING-off) but it's probability in the context is not being considered.
 - P<continuation> -- Instead of considereing unigram probabiliies, we need to look into the set of preceding words that a particular word will complete (in a bi0gram model)
- Every bigram type was a novelcontinuation the first time it was seen.
+ Every bigram type was a novel continuation the first time it was seen.
+ - [!Final formula](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Knese-NeyJPG.JPG)
  
 
 
