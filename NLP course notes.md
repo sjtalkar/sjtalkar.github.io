@@ -242,15 +242,8 @@ Used for probability of an n-gram based on other n-grams
 - Better estimate of probabilties of lower-order unigrams Probablity of singleton and not just tuples- This is because some words are more frequesnt in the context of 
 another word. Such as Fransisco is more frequent in the context of San
 - The unigram us useful exactly when we haven't seen this bigram. For insttance say we want to complete a sentence I am lookig for my reading -----------. If Fransisco as a unigram has a gigher probability than glasses, then you might use that unigram probability to use Fransisco (when BACKING-off) but it's probability in the context is not being considered.
-- P<continuation> -- Instead of considereing unigram probabiliies, we need to look into the set of preceding words that a particular word will complete (in a bi0gram model)
+- P </continuation> -- Instead of considereing unigram probabiliies, we need to look into the set of preceding words that a particular word will complete (in a bi0gram model) Normalize this by the count of total number of word bigram types.
  Every bigram type was a novel continuation the first time it was seen.
- - [!Final formula](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Knese-NeyJPG.JPG)
- 
-
-
- 
-
-
 
 > # TIMESERIES
 > 
@@ -409,6 +402,35 @@ both the autocorrelations and the shocks in predicting time series values. The t
 yt = p i=1 ai · yt−i + q i=1 bi · ǫt−i + c + ǫt
 
 In general, it is advisable to select the values of p and q as small as possible, so that the model fits the data well
+
+
+ 
+ ####  Multivariate Forecasting with Hidden Variables
+ 
+ In practice, a given application may have thousands of time series, and there may be significant correlations both across different series and across time. Therefore, models are required that can combine the autoregressive correlations with the cross-series correlations for making forecasts.
+ 
+ 1. Construct the d × d covariance matrix of the multidimensional time series. Let the d × d covariance matrix be denoted by C. The (i, j)th entry of C is the covariance
+between the ith and jth series. This step is identical to the case of multidimensional data, and the temporal ordering among the different values of Yi is not used at this stage. Thus, the covariance matrix only captures information about correlations across series, rather than correlations across time.
+2. Determine the eigenvectors of the covariance matrix C as follows:
+C = PΛPT 
+Here, P is a d×d matrix, whose d columns contain the orthonormal eigenvectors. The matrix Λ is a diagonal matrix containing the eigenvalues. Let Ptruncated be a d × p
+matrix obtained by selecting the p ≪ d columns of P with the largest eigenvalues. Typically, the value of p is much smaller than d. This represents a basis for the hidden series with the greatest variability.
+3. A new multivariate time series with p hidden time series variables is created. Each d-dimensional time series data point Yi at the ith timestamp is expressed in terms of a p-dimensional hidden series data point. This is achieved by using the p basis vectors derived in the previous step. Therefore, the p-dimensional hidden value Zi = (z1i . . . z<sup>p</sup><sub>i<sub> )
+is derived as follows:
+Z<sub>i</sub> = Y<sub>i</sub>P<sub>truncated</sub>\
+ 
+ 
+ https://stats.stackexchange.com/questions/119746/what-is-the-proper-association-measure-of-a-variable-with-a-pca-component-on-a/119758#119758
+ https://stats.stackexchange.com/questions/143905/loadings-vs-eigenvectors-in-pca-when-to-use-one-or-another
+ 
+In PCA, you split covariance (or correlation) matrix into scale part (eigenvalues) and direction part (eigenvectors). You may then endow eigenvectors with the scale: loadings. So, loadings are thus become comparable by magnitude with the covariances/correlations observed between the variables, - because what had been drawn out from the variables' covariation now returns back - in the form of the covariation between the variables and the principal components. Actually, loadings are the covariances/correlations between the original variables and the unit-scaled components. This answer shows geometrically what loadings are and what are coefficients associating components with variables in PCA or factor analysis. 
+ 
+ 
+ 
+ 
+ 
+ 
+
 
 
 
