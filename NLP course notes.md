@@ -209,11 +209,11 @@ Sum of $\lambda$ s equals 1
 
 
 ## Out of Vocabulary words
-- Create an unknown word token <UNK>
+- Create an unknown word token \<UNK>
 
-### Training of <UNK> probabilities
+### Training of \<UNK> probabilities
 - Create a fixed lexicon L of size V
-- At text normalization phase (dividing by count of the unigrams), any training word not in L changed to <UNK>
+- At text normalization phase (dividing by count of the unigrams), any training word not in L changed to \<UNK>
 - Now train its probablitlies like a normal word
 - At decoding time: Use UNK probabilities for any word not in training 
 
@@ -236,6 +236,11 @@ P<sub>UnigramPrior</sub>(w<sub>i</sub> | w<sub>i-1</sub>) =
 - Kneser-Ney
 - Witten-Bell
 
+
+
+
+> # TIMESERIES
+> 
 #### Notation N<sub>c</sub> Frequency of frequency of c
 
 You are fishing and caught :
@@ -286,6 +291,7 @@ When the true positives are miniscule compared to the true negatives, it might b
  
 ![Wighted Harmonic Mean of recall and Precision](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Wighted%20Harmonic%20of%20recall%20and%20Precision.JPG)
  
+
  
 # Stationarity
  
@@ -316,6 +322,29 @@ Autocorrelations represent the correlations between adjacently located timestamp
  Autocorrelation(L) = Covariancet(yt, yt+L)/Variancet(yt)
  
  [From textbook Data Mining by Charu Agarwal) 
+ 
+### Handling missing values 
+
+It is common for time series data to contain missing values. Furthermore, the values of the series may not be synchronized in time when they are collected by independent sensors. It is often convenient to have time series values that are equally spaced and synchronized across different behavioral attributes for data processing.
+
+The most common methodology used for handling missing, unequally spaced, or unsynchronized values is **linear interpolation** - think IBR and terms. The
+idea is to create estimated values at the desired time stamps.
+y = y<sub>i</sub> + ((t-t<sub>i</sub>)/(t<sub>j</sub> - t<sub>i</sub>) * (y<sub>j</sub> - y<sub>i</sub>)
+
+## Noise Removal
+[Think R squared and the variability that cannot be explained by the model]
+The approach used by most of the noise removal methods is to remove **short-term fluctuations**. It should be pointed out that the distinction between noise and interesting outliers is often a difficult one to make. Interesting outliers are fluctuations, caused by specific aspects of the data generation process, rather than artifacts of the data collection process.
+- Binning
+- Moving Average (rolling average) smoothing : similar to binning BUT
+The main difference is that a bin is constructed starting at each timestamp in the series rather than only the timestamps at the boundaries of the bins. Therefore,
+the bin intervals are chosen to be [t1, tk], [t2, tk+1], etc. This results in a set of overlapping interval.
+**CONS** :Short-term trends are sometimes lost because of smoothing. Larger bin sizes result in greater smoothing and lag.
+- Exponenetial smoothing
+In exponential smoothing, the smoothed value y′i is defined as a linear combination of the current value yi, and the previously smoothed value y′i −1.
+
+
+
+
 ###  Autoregressive Models
 > Univariate time series contain a single variable that is predicted using autocorrelations.
 
