@@ -1,0 +1,5 @@
+1. To create requirements file:
+pipreqs  --print  --encoding=utf-8 ..\StreamlitProject
+Use above after installing pipreqs
+
+2.Makes sure datatypes are set after importing the CSV
