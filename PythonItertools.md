@@ -43,15 +43,19 @@ with open('test.log', 'r') as f:
     
     for line in header:
         print(line)
-
-
-
-
-
-
-
-
-
-```
+        
+ 
+ #Cumsum
+ result = itertolls.accumulate(numbers)
+ 
+ #For cumulative multiplication
+ import operator
+ 
+ result = itertools.accumulate(numbers, operator.mul)
+ 
+ ## Grouping
+ 
+ itertools.groupby()
+ ```
 
 
