@@ -140,14 +140,16 @@ Intrinsic to the model itself rather than the application.
 The idea is that the best model will return the best probability number - high probability.
 The best model best predicts an unseen test set.
 
-Perplexity is the probability of the test set normalized by the number of words.
-
+Perplexity is the probability of the test set normalized by the number of words. (Is it kind of like Surprise in Entropy?)
 It is the inverse of the nth square (normalization) of the probability of the test set.
 
 Minimizing perplexity is the same as maximizing probability.
 
 Perplixity is related the the average branching factor.
-Weighted equivalent branching factor
+Weighted equivalent branching factor.
+An (intrinsic) improvement in perplexity does not guarantee an (extrinsic) improvement in the performance of a language processing task like speech recognition
+or machine translation. Nonetheless, because perplexity often correlates with such improvements, it is commonly used as a quick check on an algorithm. But a model’s
+improvement in perplexity should always be confirmed by an end-to-end evaluation of a real task before concluding the evaluation of the model.
 
 ## The Shannon Visualization method
 - Choose a random bigram according to its **probability** :            (<\s>, I)
@@ -160,6 +162,17 @@ Then we string it all together to create the sentence.
 ## Problems with N gram models
 - Weak generalization- If you train on the Wll street Journal - diificul to predict Shakespeare ad vice versa.
 - Probability of having seen an n-gram can be zero - Perplexity is undefined.
+
+## \<UNK> words
+> Method 1
+1. Choose a vocabulary (word list) that is fixed in advance.
+2. Convert in the training set any word that is not in this set (any OOV word) to the unknown word token \<UNK> in a text normalization step.
+3. Estimate the probabilities for \<UNK> from its counts just like any other regularword in the training set.
+> Method 2
+ The second alternative, in situations where we don’t have a prior vocabulary in advance, is to create such a vocabulary implicitly, replacing words in the training data
+by \<UNK> based on their frequency. For example we can replace by <UNK> all words that occur fewer than n times in the training set, where n is some small number, or
+equivalently select a vocabulary size V in advance (say 50,000) and choose the top V words by frequency and replace the rest by UNK. 
+
 
 ## SMOOTHING
 Why 
