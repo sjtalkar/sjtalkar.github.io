@@ -11,8 +11,11 @@ We’ll see how to use n-gram models to estimate the probability of the last wor
 A model that computes either of these:
 P(W) or P(w<sub>n</sub> | w<sub>1</sub>, w<sub>2</sub>,....w<sub>n-1</sub>) is called a language model.
 
-
 Probabilities are essential in any task in which we have to identify words in noisy, ambiguous input.
+We’ll see how to use n-gram models to estimate the probability of the last word of
+an n-gram given the previous words, and also to assign probabilities to entire sequences. In a bit of terminological ambiguity, we usually drop the word “model”,
+and use the term n-gram (and bigram, etc.) to mean either the word sequence itself or the predictive model that assigns it a probability.
+
  ### Speech recognition.
  For a speech recognizer to realizethat you said I will be back soonish and not I will be bassoon dish, it helps to know that back soonish is a much more probable sequence than  bassoon dish.
  
