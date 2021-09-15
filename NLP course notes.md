@@ -3,10 +3,11 @@
 ## N-gram Language Models Predicting words by assigning probabilities
 [Intro](https://www.youtube.com/watch?v=oWsMIW-5xUc)
 [Stanford video](https://www.youtube.com/watch?v=hB2ShMlwTyc)
+[Stanford Text](https://web.stanford.edu/~jurafsky/slp3/3.pdf)
 [Texas University PDF link for formulas](https://www.cs.utexas.edu/~mooney/cs388/slides/equation-sheet.pdf)
 
 Models that assign probabilities to sequences of words are called language model  or LMs. The simplest model that assigns probabilities to sentences and sequences of words: the n-gram. An n-gram is a sequence of n words: a 2-gram (which we’ll call bigram) is a two-word sequence of wordslike “please turn”, “turn your”, or ”your homework”, and a 3-gram (a trigram) is a three-word sequence of words like “please turn your”, or “turn your homework”.
-We’ll see how to use n-gram models to estimate the probability of the last word of an n-gram given the previous words, and also to assign probabilities to entire sequences.
+We’ll see how to use n-gram models to estimate the probability of the last word of an n-gram given the previous words, and also to assign probabilities to entire sequences. **The intuition of the n-gram model is that instead of computing the probability of a word given its entire history, we can approximate the history by just the last few words.** The assumption that the probability of a word depends only on the previous word is  called a **Markov assumption.**
 
 A model that computes either of these:
 P(W) or P(w<sub>n</sub> | w<sub>1</sub>, w<sub>2</sub>,....w<sub>n-1</sub>) is called a language model.
@@ -77,9 +78,10 @@ The MLE
 
 An intuitive way to estimate probabilities is called maximum likelihood estimation or MLE. We get maximum likelihood estimation the MLE estimate for the parameters of an n-gram model by getting counts from a normalize corpus, and normalizing the counts so that they lie between 0 and 1.
 
-The below is MLE
+The below is MLE (Look into Page four of Chapter 3 in Stanford notes)
 P(w<sub>i</sub> | w <sub>i-1</sub>) = Count(w<sub>i-1</sub>, w<sub>i</sub>) /Count(w <sub>i-1</sub>)
-(Joint probability divided by probability of previous word) 
+(Joint probability divided by probability of previous word. Note that the denominator has been simplified, since the sum of all bigram counts that start with
+a given word w<sub>n−1</sub> must be equal to the unigram count for that word w<sub>n−1</sub>) 
 
 Bigram table shows word in row index followed by word in column index count
 
@@ -104,6 +106,7 @@ P(I|,<\s>)
 * P(food | english)
 * P(</\s>|food)
 
+**NOTE:** For longer grams  we’ll need to assume extra contexts to the left and right of the sentence end. For example, to compute trigram probabilities at the very beginning of the sentence,we use two pseudo-words for the first trigram (i.e., P(I|\<s>\<s>).
 
 #### We do everything in log space
     - Avoid underflow
