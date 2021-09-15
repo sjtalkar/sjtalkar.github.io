@@ -175,11 +175,17 @@ equivalently select a vocabulary size V in advance (say 50,000) and choose the t
 
 
 ## SMOOTHING
+ Smoothing is different from Unknown words
+ What do we do with words that are in our vocabulary (they are not unknown words) but appear in a test set in an unseen context (for example they appear after a word
+ they never appeared after in training)?
+ 
 Why 
-  - Becuase of zeroing out of certain words when not seen in original training corpus
+  - Because of zeroing out of certain words when not seen in original training corpus
   - Helps with generalizations
   - Works for words but not n-grams
 
+Intuition : Shave off a bit of probability mass from some more frequent events and give it to the events we’ve never seen 
+ 
 ### Add-one estimation or Laplace smoothing
 - Pretend that we saw each word one more time than we did.
 - Just add one to all the counts
