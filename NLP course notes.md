@@ -412,6 +412,7 @@ R<sup>2</sup> = 1− Mean<sub>t</sub> (ǫ<sup>2</sup>t )/ Variancet(y <sub>t</su
 The coefficient of determination quantifies the fraction of variability in the series that is explained by the regression, as opposed to random noise. It is therefore desirable for this coefficient to be as close to 1 as possible.
 
 ## > Autoregressive Moving Average Models
+ [Galit Shmueli lectures](https://www.youtube.com/watch?v=Vdv9GSrgLQU)
 
 While autocorrelation is a useful predictive property of time series, it does not always explain all the variations. In fact, the unexpected component of the variations (shocks), does impact future values of the time series. This component can be captured with the use of a moving average model (MA). The moving average model predicts subsequent series values on the basis of the past history of deviations from predicted values. A deviation from a predicted value can be viewed as white noise, or a shock. This model is best used in scenarios where the behavioral attribute value at a timestamp is dependent on the history of shocks in the time series,
 rather than the actual series values.
