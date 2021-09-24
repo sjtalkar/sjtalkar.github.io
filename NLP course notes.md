@@ -452,6 +452,14 @@ Z<sub>i</sub> = Y<sub>i</sub>P<sub>truncated</sub>\
  
 In PCA, you split covariance (or correlation) matrix into scale part (eigenvalues) and direction part (eigenvectors). You may then endow eigenvectors with the scale: loadings. So, loadings are thus become comparable by magnitude with the covariances/correlations observed between the variables, - because what had been drawn out from the variables' covariation now returns back - in the form of the covariation between the variables and the principal components. Actually, loadings are the covariances/correlations between the original variables and the unit-scaled components. This answer shows geometrically what loadings are and what are coefficients associating components with variables in PCA or factor analysis. 
  
+ ![Timeseries ACF PACF](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Timeseries%20ACF%20and%20PACF.JPG)
+ ![Timeseries ACF PACF](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Timeseries%20ACF%20and%20PACF%201.JPG)
+ ![Timeseries ACF PACF](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Timeseries%20ACF%20and%20PACF%202.JPG)
+ ![Timeseries ACF PACF](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Timeseries%20ACF%20and%20PACF%203.JPG)
+ ![Timeseries ACF PACF](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Timeseries%20ACF%20and%20PACF%204.JPG)
+ ![Timeseries ACF PACF](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Timeseries%20ACF%20and%20PACF%205.JPG)
+
+ 
  
  
  
