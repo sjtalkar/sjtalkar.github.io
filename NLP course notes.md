@@ -458,6 +458,8 @@ In PCA, you split covariance (or correlation) matrix into scale part (eigenvalue
  ![Timeseries ACF PACF](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Timeseries%20ACF%20and%20PACF%203.JPG)
  ![Timeseries ACF PACF](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Timeseries%20ACF%20and%20PACF%204.JPG)
  
+ 
+# Full Time series series [https://www.youtube.com/watch?v=IKY_uDiSe8U&list=PL_iP0SGUzx9SvI_loo4I6orC-6o5-7hKp] 
 
 # [How to select between AR and MA models using ACF and PACF - Data Science Show](https://www.youtube.com/watch?v=CAT0Y66nPhs&t=0s)
  
