@@ -472,6 +472,7 @@ In PCA, you split covariance (or correlation) matrix into scale part (eigenvalue
 
 
 
-
+# [How to select between AR and MA models using ACF and PACF](https://www.youtube.com/watch?v=CAT0Y66nPhs&t=0s)
+> **NOTE: Make sure you ignore any significant spikes a LAG 0 **
 
 
