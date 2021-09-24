@@ -460,8 +460,9 @@ In PCA, you split covariance (or correlation) matrix into scale part (eigenvalue
  
 
 # [How to select between AR and MA models using ACF and PACF - Data Science Show](https://www.youtube.com/watch?v=CAT0Y66nPhs&t=0s)
+ 
 > **NOTE: Make sure you ignore any significant spikes a LAG 0 **
-> Fewer PACF spikes (relative to ACF spikes or correlation) favor an AR model and the number of spikes determines the order 
+> [Fewer PACF spikes (relative to ACF spikes or correlation) favor an AR model and the number of spikes determines the order](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/How%20to%20Use%20ACF%20and%20PACF.pptx)
  
 
 
