@@ -4,7 +4,8 @@
 [Natural Language Processing of Reddit and Twitter posts on Scaling Mt. Everest](https://dagshub.com/sjtalkar/capstone_himalayas)
 
 
-![Capstone EDA Image]
+![Capstone EDA Image](Milestone 2.PNG)
+
 [Milestone 2 Streamlit App](https://sjtalkar-milestone2-streamlit-milestone2-app-g8fn85.streamlit.app/)|[Code for Milestone 2 project](https://github.com/sjtalkar/milestone2_waterwells_deepnote)
 
 
