@@ -1,4 +1,4 @@
-[Analytics Portfolio]()
+[Analytics Portfolio](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Spur%20Into%20Action%20Read%20Only.pdf)
 
 *********************************************************************************
 
