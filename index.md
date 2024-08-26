@@ -1,3 +1,4 @@
+![SupplychainCover](SupplyChainCover.PNG)
 [Analytics Portfolio](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Spur%20Into%20Action%20Read%20Only.pdf)
 
 *********************************************************************************
@@ -14,6 +15,7 @@
 [Milestone 2 Streamlit App](https://sjtalkar-milestone2-streamlit-milestone2-app-g8fn85.streamlit.app/)|[Code for Milestone 2 project](https://github.com/sjtalkar/milestone2_waterwells_deepnote)
 
 **********************************************************************************
+
 [Medium Articles](https://sjtalkar.medium.com/)
 
 
