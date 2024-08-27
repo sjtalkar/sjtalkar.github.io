@@ -1,5 +1,6 @@
 ## Supply Chain Intelligence
-> Analysis turns data into business information, or information that is actionable, relevant, reliable, and placed in context.
+
+Analysis turns data into business information, or information that is actionable, relevant, reliable, and placed in context.
 
 
 > ![SupplychainCover](SupplyChainCover1.jpg)
