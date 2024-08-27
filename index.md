@@ -1,6 +1,6 @@
 ![SupplychainCover](SupplyChainCover.PNG)
 [Analytics Portfolio](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Spur%20Into%20Action%20Read%20Only.pdf)
-
+> Analysis turns data into business information, or information that is actionable, relevant, reliable, and placed in context.
 *********************************************************************************
 
 ![Capstone EDA Image](Capstone EDA Pics.PNG)
