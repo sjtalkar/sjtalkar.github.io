@@ -28,6 +28,7 @@ Groundwater Sustainability
 [Milestone 2 Streamlit App](https://sjtalkar-milestone2-streamlit-milestone2-app-g8fn85.streamlit.app/)|[Code for Milestone 2 project](https://github.com/sjtalkar/milestone2_waterwells_deepnote)
 
 ************************************************************************************
+![Visualization Image](VisualIcon.jpg)
 
 [Dashboard Visualization Principles](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Power%20BI%20Dashboard%20Design%20Standards.pdf)
 
