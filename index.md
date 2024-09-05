@@ -29,7 +29,7 @@ Groundwater Sustainability
 
 ************************************************************************************
 
-[Dashboard Visualization Principles](Power BI Dashboard Design Standards.pdf)
+[Dashboard Visualization Principles](https://github.com/sjtalkar/sjtalkar.github.io/blob/main/Power%20BI%20Dashboard%20Design%20Standards.pdf)
 
 *************************************************************************************
 
